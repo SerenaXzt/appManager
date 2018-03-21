@@ -27,6 +27,11 @@
     <result column="logoLocPath" jdbcType="VARCHAR" property="logolocpath" />
     <result column="versionId" jdbcType="BIGINT" property="versionid" />
   </resultMap>
+  
+  
+  
+  
+  
   <sql id="Base_Column_List">
     id, softwareName, APKName, supportROM, interfaceLanguage, softwareSize, updateDate, 
     devId, appInfo, status, onSaleDate, offSaleDate, flatformId, categoryLevel3, downloads, 
