@@ -31,10 +31,6 @@ public class DevUserServiceImpl implements DevUserService{
 			e.printStackTrace();
 		}
 		//匹配密码
-		if(null != devuser){
-			if(!devuser.getDevpassword().equals(password))
-				devuser = null;
-		}
 		
 		return devuser;
 	}

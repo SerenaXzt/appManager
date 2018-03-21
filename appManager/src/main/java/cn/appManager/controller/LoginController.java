@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import cn.app.pojo.DevUser;
 import cn.app.service.user.DevUserService;
@@ -29,8 +30,8 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value="/devLogin",method=RequestMethod.POST)
-	public String login2(String userCode,
-			String userPassword,
+	public String login2(@RequestParam("userCode")String userCode,
+			@RequestParam("userPassword")String userPassword,
 			HttpSession session,
 			Model model) {
 		System.out.println("login ============ " );
@@ -44,7 +45,7 @@ public class LoginController {
 		}else{
 			//页面跳转（devLogin.jsp）带出提示信息--转发
 			model.addAttribute("error", "用户名或密码不正确");
-			return "devLogin";
+			return "redirect:/devLogin.jsp";
 		}
 	}
 }
