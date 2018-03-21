@@ -26,7 +26,7 @@ public class helloWorld {
 	
 	@RequestMapping("/appInfo")
 	public String gotoDevPage(){
-		return "devPage";
+		return "appList/devUserAppList";
 
 //		App app = appMapper.selectOne(48);
 //		System.out.println(app);
