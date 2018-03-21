@@ -46,6 +46,7 @@
                 <input type="password" class="form-control" placeholder="Password" required="" />
               </div>
                <div class="form-group">
+               <!-- sadfsdfsfd -->
 			      <button type="submit" class="btn btn-primary">登录</button>
 			      <button type="reset" class="btn btn-danger">重置</button>
 			  </div>
