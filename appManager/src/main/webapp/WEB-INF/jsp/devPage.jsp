@@ -45,7 +45,7 @@
 					<!-- menu profile quick info -->
 					<div class="profile">
 						<div class="profile_pic">
-							<img src="images/img.jpg" alt="..."
+							<img src="statics/images/img.jpg" alt="..."
 								class="img-circle profile_img">
 						</div>
 						<div class="profile_info">

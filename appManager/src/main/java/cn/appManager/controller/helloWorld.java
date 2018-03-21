@@ -17,9 +17,9 @@ public class helloWorld {
 	
 	@RequestMapping("/appInfo")
 	public String show(Model model) {
-		App app = appMapper.selectOne(48);
-		System.out.println(app);
-		model.addAttribute("app", app);
-		return "index";
+//		App app = appMapper.selectOne(48);
+//		System.out.println(app);
+//		model.addAttribute("app", app);
+		return "backPage";
 	}
 }
