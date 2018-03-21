@@ -17,5 +17,9 @@ public class DaoTest {
 		DevUserMapper mapper = (DevUserMapper) context.getBean("devUserMapper");
 		DevUser user = mapper.selectByCodeAndPwd("test001", "123456");
 		System.out.println(user.getDevcode()+"   "+user.getDevname());
+		
+		
+		
+		
 	}
 }
