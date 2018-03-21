@@ -12,7 +12,7 @@ import cn.app.pojo.App;
 @Controller
 public class helloWorld {
 	
-	@Autowired
+	/*@Autowired
 	private AppMapper appMapper;
 	
 	@RequestMapping("/appInfo")
@@ -21,5 +21,10 @@ public class helloWorld {
 		System.out.println(app);
 		model.addAttribute("app", app);
 		return "index";
+	}*/
+	
+	@RequestMapping("/appInfo")
+	public String gotoDevPage(){
+		return "devPage";
 	}
 }
