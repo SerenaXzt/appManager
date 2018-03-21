@@ -37,13 +37,13 @@
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-            <form>
+            <form action="${pageContext.request.contextPath }/backLogin" method="post">
               <h1>管理员登录</h1>
-              <div>
-                <input type="text" class="form-control" placeholder="Username" required="" />
+              <div> 
+                <input type="text" class="form-control" name="userCode" placeholder="Username" required="" />
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Password" required="" />
+                <input type="password" class="form-control" name="userPassword" placeholder="Password" required="" />
               </div>
                <div class="form-group">
                <!-- sadfsdfsfd -->

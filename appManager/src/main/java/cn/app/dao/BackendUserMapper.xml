@@ -139,4 +139,10 @@
       userPassword = #{userpassword,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  <select id="selectByCodeAndPwd" resultMap="BaseResultMap">
+		select 
+	    <include refid="Base_Column_List" />
+	    from backend_user
+	    where userCode=#{userCode} and userPassword=#{userPassword}
+	</select>
 </mapper>

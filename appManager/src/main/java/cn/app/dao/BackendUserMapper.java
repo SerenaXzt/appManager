@@ -1,5 +1,7 @@
 package cn.app.dao;
 
+import org.apache.ibatis.annotations.Param;
+
 import cn.app.pojo.BackendUser;
 
 public interface BackendUserMapper {
@@ -14,4 +16,6 @@ public interface BackendUserMapper {
     int updateByPrimaryKeySelective(BackendUser record);
 
     int updateByPrimaryKey(BackendUser record);
+    
+    BackendUser selectByCodeAndPwd(@Param("userCode")String userCode, @Param("userPassword")String userPassword);
 }
