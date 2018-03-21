@@ -12,14 +12,31 @@ import cn.app.pojo.App;
 @Controller
 public class helloWorld {
 	
-	@Autowired
+	/*@Autowired
 	private AppMapper appMapper;
 	
 	@RequestMapping("/appInfo")
 	public String show(Model model) {
+<<<<<<< HEAD
+		App app = appMapper.selectOne(48);
+		System.out.println(app);
+		model.addAttribute("app", app);
+		return "index";
+	}*/
+	
+	@RequestMapping("/appInfo")
+	public String gotoDevPage(){
+		return "devPage";
+
 //		App app = appMapper.selectOne(48);
 //		System.out.println(app);
 //		model.addAttribute("app", app);
-		return "backPage";
+		//return "backPage";
+//>>>>>>> branch 'master' of https://github.com/SerenaXzt/appManager.git
+		
+		
+		//asdasdsadsa
+		
+		
 	}
 }

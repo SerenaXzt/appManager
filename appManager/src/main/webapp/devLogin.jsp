@@ -40,10 +40,10 @@
             <form action="${pageContext.request.contextPath }/devLogin" method="post">
               <h1>开发者登录</h1>
               <div>
-                <input type="text" class="form-control" placeholder="Username" required="" />
+                <input type="text" name="usesrCode" class="form-control" placeholder="Username" required="" />
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Password" required="" />
+                <input type="password" name="userPassword" class="form-control" placeholder="Password" required="" />
               </div>
                <div class="form-group">
 			      <button type="submit" class="btn btn-primary">登录</button>
