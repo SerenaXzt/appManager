@@ -17,6 +17,7 @@ public class helloWorld {
 	
 	@RequestMapping("/appInfo")
 	public String show(Model model) {
+<<<<<<< HEAD
 		App app = appMapper.selectOne(48);
 		System.out.println(app);
 		model.addAttribute("app", app);
@@ -26,5 +27,11 @@ public class helloWorld {
 	@RequestMapping("/appInfo")
 	public String gotoDevPage(){
 		return "devPage";
+
+//		App app = appMapper.selectOne(48);
+//		System.out.println(app);
+//		model.addAttribute("app", app);
+		//return "backPage";
+//>>>>>>> branch 'master' of https://github.com/SerenaXzt/appManager.git
 	}
 }
