@@ -321,4 +321,51 @@
       versionId = #{versionid,jdbcType=BIGINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+
+	<resultMap type="cn.app.vo.AppInfoVo" id="appInfoVo">
+		 <id column="id" jdbcType="BIGINT" property="id" />
+	    <result column="softwareName" jdbcType="VARCHAR" property="softwarename" />
+	    <result column="APKName" jdbcType="VARCHAR" property="apkname" />
+	    <result column="softwareSize" jdbcType="DECIMAL" property="softwaresize" />
+	    <result column="appInfo" jdbcType="VARCHAR" property="appinfo" />
+	    <result column="status" jdbcType="BIGINT" property="status" />
+	    <result column="flatformId" jdbcType="BIGINT" property="flatformid" />
+	    <result column="categoryLevel3" jdbcType="BIGINT" property="categorylevel3" />
+	    <result column="downloads" jdbcType="BIGINT" property="downloads" />
+	    <result column="categoryLevel1" jdbcType="BIGINT" property="categorylevel1" />
+	    <result column="categoryLevel2" jdbcType="BIGINT" property="categorylevel2" />
+	    <result column="versionNo" jdbcType="VARCHAR" property="versionNo" />
+		
+	</resultMap>
+	<select id="selectAllApp" resultMap="appInfoVo">
+		select  
+		aif.id, softwareName, APKName, softwareSize, 
+		status,flatformId, categoryLevel3, downloads, 
+		categoryLevel1, categoryLevel2, aver.versionNo
+		from app_info aif
+		LEFT OUTER JOIN app_version aver
+		on aif.versionId = aver.id
+     	<where>
+     		  <if test="id != null and id != 0">
+     		  	and aif.id = #{id}
+     		  </if>
+     		  <if test="softwarename != null">
+		        and softwareName = #{softwarename,jdbcType=VARCHAR},
+		      </if>
+		      <if test="appStatus != null">
+		        and status = #{appStatus,jdbcType=BIGINT},
+		      </if>
+		      <if test="categorylevel3 != null">
+		        and categoryLevel3 = #{categorylevel3,jdbcType=BIGINT},
+		      </if>
+		      <if test="categorylevel1 != null">
+		        and categoryLevel1 = #{categorylevel1,jdbcType=BIGINT},
+		      </if>
+		      <if test="categoryLevel2 != null">
+		        and categoryLevel2 = #{categoryLevel2,jdbcType=BIGINT},
+		      </if>
+     	</where>
+	</select>
+
 </mapper>

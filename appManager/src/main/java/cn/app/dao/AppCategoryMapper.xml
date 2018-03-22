@@ -125,4 +125,9 @@
       modifyDate = #{modifydate,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+	<select id="selectAllCategoryVo" resultType="cn.app.vo.AppCategoryVo">
+		select id , categoryName 
+		from app_category
+	</select>
 </mapper>

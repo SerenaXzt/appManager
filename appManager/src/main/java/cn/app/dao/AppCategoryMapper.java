@@ -1,6 +1,9 @@
 package cn.app.dao;
 
+import java.util.List;
+
 import cn.app.pojo.AppCategory;
+import cn.app.vo.AppCategoryVo;
 
 public interface AppCategoryMapper {
     int deleteByPrimaryKey(Long id);
@@ -14,4 +17,6 @@ public interface AppCategoryMapper {
     int updateByPrimaryKeySelective(AppCategory record);
 
     int updateByPrimaryKey(AppCategory record);
+    
+    List<AppCategoryVo> selectAllCategoryVo();
 }
