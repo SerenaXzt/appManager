@@ -1,4 +1,4 @@
-function level2(level){
+function level2(){
 	/*var parentId = $(level).val();
 	if(null != parentId && parentId >=0){
 		$.ajax({

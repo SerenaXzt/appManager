@@ -60,7 +60,7 @@
 								  <div class="form-group">
 								    <label for="inputPassword3" class="col-sm-4 control-label text-right">一级分类</label>
 								    <div class="col-sm-6">
-								      <select id="level1" class="form-control input-sm" onchange="level2(this)">
+								      <select id="level1" class="form-control input-sm" onchange="level2()">
 								      	<option>===请选择===</option>
 								      	<option value="1">全部应用</option>
 								      	<option value="2">全部游戏</option>
