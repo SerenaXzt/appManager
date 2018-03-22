@@ -63,7 +63,7 @@ public class AppInfoController {
 	}
 	
 	
-	@RequestMapping(value="/appsInfo/showCategory/{parentId}",method=RequestMethod.GET)
+	@RequestMapping(value="/showCategory/{parentId}",method=RequestMethod.GET)
 	@ResponseBody
 	public Msg showCategory(@PathVariable Integer parentId){
 		if(parentId != null && parentId>=0){
@@ -71,6 +71,23 @@ public class AppInfoController {
 			return Msg.success().addExtend("categoryList", categoryList);
 		}
 		return Msg.fail();
+	}
+	
+	@RequestMapping(value="/deleteApp",method=RequestMethod.GET)
+	public String deleteApp() {
+		return"/appsInfo";
+	}
+	
+	@RequestMapping(value="/deleteApp",method=RequestMethod.POST)
+	@ResponseBody
+	public String deleteApp2(@Valid AppInfo appInfo,BindingResult bindingResult,
+			HttpSession session) {
+		if(bindingResult.hasErrors()) {
+			System.out.println("=======had errors=======");
+			
+			return "/appsInfo";
+		}
+		return"/appsInfo";
 	}
 	
 }

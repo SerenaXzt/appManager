@@ -3,6 +3,7 @@ encoding//src/main/java/cn/app/dao/DevUserMapper.java=UTF-8
 encoding//src/main/java/cn/app/service/appinfo/AppInfoService.java=UTF-8
 encoding//src/main/java/cn/app/service/user/BackUserService.java=UTF-8
 encoding//src/main/java/cn/app/vo/AppInfoVo.java=UTF-8
+encoding//src/main/java/cn/app/vo/Msg.java=UTF-8
 encoding//src/main/webapp/WEB-INF/jsp/appList/devUserAppList.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/jsp/app_add.jsp=UTF-8
 encoding//src/main/webapp/statics/common/footer.jsp=UTF-8

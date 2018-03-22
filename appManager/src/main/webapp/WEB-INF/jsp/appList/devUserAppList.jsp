@@ -6,6 +6,8 @@
 			+ path + "/";
 %>
 <base href=" <%=basePath%>">
+<script type="text/javascript" src="statics/jquery/jquery-1.12.4.js"></script>
+
 <%@include file="/statics/common/head.jsp" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 			<div class="container">
@@ -60,7 +62,7 @@
 								  <div class="form-group">
 								    <label for="inputPassword3" class="col-sm-4 control-label text-right">一级分类</label>
 								    <div class="col-sm-6">
-								      <select id="level1" class="form-control input-sm" onchange="level2()">
+								      <select id="level1" class="form-control input-sm" >
 								      	<option>===请选择===</option>
 								      	<option value="1">全部应用</option>
 								      	<option value="2">全部游戏</option>
@@ -72,7 +74,7 @@
 								<div class="form-group">
 								    <label for="inputPassword3" class="col-sm-4 control-label text-right">二级分类</label>
 								    <div class="col-sm-6">
-								      <select id="level2" class="form-control input-sm">
+								      <select id="level2" class="form-control input-sm" >
 								      	<option>===请选择===</option>
 								      </select>
 								    </div>
@@ -82,7 +84,7 @@
 								<div class="form-group">
 								    <label for="inputPassword3" class="col-sm-4 control-label text-right">三级分类</label>
 								    <div class="col-sm-6">
-								      <select  class="form-control input-sm">
+								      <select id="level3"  class="form-control input-sm">
 								      	<option>===请选择===</option>
 								      </select>
 								    </div>
@@ -154,7 +156,7 @@
 											    <li><a href="#">新增版本</a></li>
 											    <li><a href="#">修改</a></li>
 											    <li><a href="#">查看</a></li>
-											    <li><a href="#">删除</a></li>
+											    <li><a delete_app="${appInfo.id }" href="#">删除</a></li>
 											  </ul>
 											</div>
 										</td>
@@ -164,6 +166,6 @@
 						</div>
 					</div>
 				</div>
-
+<script type="text/javascript" src="statics/jquery/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="statics/common/js/ajaxThreeLevel.js"></script>
 <%@include file="/statics/common/footer.jsp" %>
-    
