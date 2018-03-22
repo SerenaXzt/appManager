@@ -57,7 +57,7 @@
 						</div>
 						<div class="profile_info">
 							<span>Welcome,</span>
-							<h2>${sessionScope.userSession.usercode }</h2>
+							<h2>${sessionScope.userSession.devcode }</h2>
 						</div>
 					</div>
 					<!-- /menu profile quick info -->
@@ -68,7 +68,7 @@
 					<div id="sidebar-menu"
 						class="main_menu_side hidden-print main_menu">
 						<div class="menu_section">
-							<h3>${sessionScope.userSession.username }</h3>
+							<h3>${sessionScope.userSession.devname }</h3>
 							<ul class="nav side-menu">
 								<li><a><i class="fa fa-home"></i>App账户管理<span
 										class="fa fa-chevron-down"></span></a>
@@ -140,18 +140,7 @@
 						<a id="menu_toggle"><i class="fa fa-bars"></i></a>
 					</div>
 
-					<ul class="nav navbar-nav navbar-right">
-						<li class=""><a href="javascript:;"
-							class="user-profile dropdown-toggle" data-toggle="dropdown"
-							aria-expanded="false"> <img src="images/img.jpg" alt="">${sessionScope.userSession.username }<span 
-							class=" fa fa-angle-down"></span>
-						</a>
-							<ul class="dropdown-menu dropdown-usermenu pull-right">
-								<li><a href="login.html"><i
-										class="fa fa-sign-out pull-right"></i> Log Out</a></li>
-							</ul></li>
-
-					</ul>
+					
 					</nav>
 				</div>
 			</div>
@@ -186,7 +175,7 @@
                   </div>
                   <div class="x_content">
                     <br />
-                    <form class="form-horizontal form-label-left">
+                    <form action="${pageContext.request.contextPath }/appsInfo" id="form" class="form-horizontal form-label-left" method="post">
 
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">软件名称*</label>
@@ -238,17 +227,17 @@
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">一级分类*</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <select class="select2_single form-control" tabindex="-1">
+                          <select class="select2_single form-control" id="firstcat">
                             <option>--请选择--</option>
-                            <option value="">全部应用</option>
-                            <option>全部游戏</option>
+                            <option value="1">全部应用</option>
+                            <option value="2">全部游戏</option>
                           </select>
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">二级分类*</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <select class="select2_single form-control" tabindex="-1">
+                          <select class="select2_single form-control">
                             <option></option>
                           </select>
                         </div>
@@ -356,9 +345,10 @@
     
     <!-- app_add -->
     <script>
-    	$
-    
-   	</script>
+    	$("#firstcat").ajax({
+    		
+    	});
+    </script>
 
     <!-- bootstrap-daterangepicker -->
     <script>
