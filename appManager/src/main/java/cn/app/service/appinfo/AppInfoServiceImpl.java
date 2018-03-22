@@ -28,4 +28,10 @@ public class AppInfoServiceImpl implements AppInfoService {
 		return appInfoList;
 	}
 
+	@Override
+	public List<AppCategoryVo> queryAllByParentId(Integer parentId) {
+		
+		return appCategoryMapper.selectByParent(parentId);
+	}
+
 }

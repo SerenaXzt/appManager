@@ -19,4 +19,6 @@ public interface AppCategoryMapper {
     int updateByPrimaryKey(AppCategory record);
     
     List<AppCategoryVo> selectAllCategoryVo();
+    
+    List<AppCategoryVo> selectByParent(Integer parentId);
 }
