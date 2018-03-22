@@ -131,7 +131,7 @@
 		from app_category
 	</select>
 	
-	<select id="" resultType="cn.app.vo.AppCategoryVo">
+	<select id="selectByParent" resultType="cn.app.vo.AppCategoryVo">
 		select id , categoryName 
 		from app_category
 		where parentId = #{parentId}

@@ -23,7 +23,6 @@
 <!-- Custom Theme Style -->
 <link href="statics/gentelella-master/build/css/custom.min.css"
 	rel="stylesheet">
-<script type="text/javascript" src="statics/common/js/ajaxThreeLevel.js"></script>
 </head>
 <body class="nav-md">
 	<div class="container body">
