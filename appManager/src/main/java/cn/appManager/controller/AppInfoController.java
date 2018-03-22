@@ -90,8 +90,4 @@ public class AppInfoController {
 		return"/appsInfo";
 	}
 	
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> branch 'master' of https://github.com/SerenaXzt/appManager.git
