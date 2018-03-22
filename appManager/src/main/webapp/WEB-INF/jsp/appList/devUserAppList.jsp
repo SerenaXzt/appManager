@@ -168,4 +168,9 @@
 				</div>
 <script type="text/javascript" src="statics/jquery/jquery-1.12.4.js"></script>
 <script type="text/javascript" src="statics/common/js/ajaxThreeLevel.js"></script>
+<<<<<<< HEAD
 <%@include file="/statics/common/footer.jsp" %>
+=======
+<%@include file="/statics/common/footer.jsp" %>
+    
+>>>>>>> branch 'master' of https://github.com/SerenaXzt/appManager.git
