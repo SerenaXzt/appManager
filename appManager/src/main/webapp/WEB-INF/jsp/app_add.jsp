@@ -186,59 +186,59 @@
                   </div>
                   <div class="x_content">
                     <br />
-                    <form class="form-horizontal form-label-left">
+                    <form class="form-horizontal form-label-left" action="${pageContext.request.contextPath }/appAdd" method="post">
 
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">软件名称*</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input type="text" class="form-control" placeholder="请输入软件名称">
+                          <input type="text" class="form-control" placeholder="请输入软件名称" name="softwarename">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">APK名称*</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input type="text" class="form-control" placeholder="请输入APK名称">
+                          <input type="text" class="form-control" placeholder="请输入APK名称" name="apkname">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">支持ROM*</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input type="text" class="form-control" placeholder="请输入支持的ROM">
+                          <input type="text" class="form-control" placeholder="请输入支持的ROM" name="supportrom">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">界面语言*</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input type="text" class="form-control" placeholder="请输入软件支持的界面语言">
+                          <input type="text" class="form-control" placeholder="请输入软件支持的界面语言" name="interfacelanguage">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">软件大小*</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input type="text" class="form-control" placeholder="请输入软件大小，单位为Mb">
+                          <input type="text" class="form-control" placeholder="请输入软件大小，单位为Mb" name="softwaresize">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">下载次数*</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input type="text" class="form-control" placeholder="请输入下载次数">
+                          <input type="text" class="form-control" placeholder="请输入下载次数" name="downloads">
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">所属平台*</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <select class="form-control">
+                          <select class="form-control" name="flatformid">
                             <option>--请选择--</option>
-                            <option>通用</option>
-                            <option>手机</option>
-                            <option>平板</option>
+                            <option value="2">通用</option>
+                            <option value="1">手机</option>
+                            <option value="3">平板</option>
                           </select>
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">一级分类*</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <select class="select2_single form-control" tabindex="-1">
+                          <select class="select2_single form-control" name="categorylevel1">
                             <option>--请选择--</option>
                             <option value="">全部应用</option>
                             <option>全部游戏</option>
@@ -248,7 +248,7 @@
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">二级分类*</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <select class="select2_single form-control" tabindex="-1">
+                          <select class="select2_single form-control" name="categorylevel2">
                             <option></option>
                           </select>
                         </div>
@@ -256,7 +256,7 @@
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">三级分类*</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <select class="select2_single form-control">
+                          <select class="select2_single form-control" name="categorylevel3">
                             <option></option>
                           </select>
                         </div>
@@ -272,13 +272,13 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">应用简介*<span class="required"></span>
                         </label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <textarea class="form-control" rows="3" placeholder="请输入本软件的相关信息，本信息作为软件的详细信息进行软件的介绍"></textarea>
+                          <textarea class="form-control" rows="3" placeholder="请输入本软件的相关信息，本信息作为软件的详细信息进行软件的介绍" name="appinfo"></textarea>
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">选择图片*</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input type="file" class="form-control" placeholder="Default Input">
+                          <input type="file" class="form-control" placeholder="Default Input" name="logopicpath">
                         </div>
                       </div>
                       
@@ -355,10 +355,35 @@
     <script src="statics/gentelella-master/build/js/custom.min.js"></script>
     
     <!-- app_add -->
-    <script>
-    	$
+    <!-- <script>
+    $("#firstcat").ready(function(){
+    function CategoryList(obj, selectId) {
+        var parentId = $(obj).val();
+        $.ajax({
+            url: contextPath + "/appsInfo/showCategory/{parentId}",
+            method: "get",
+            data: {
+                action: "showCategory",
+                parentId: parentId
+            },
+            success: function (jsonStr) {
+                var result = eval("(" + jsonStr + ")");
+                //状态判断
+                if (result.status == 1) {
+                    var options = "<option value=''>" + "请选择..." + "</option>";
+                    for (var i = 0; i < result.data.length; i++) {
+                        var option = "<option value=" + result.data[i].id + ">" + result.data[i].name + "</option>";
+                        options = options + option;
+                    }
+                    $("#" + selectId).html(options);
+                }
+            }
+        });
+    }
+    	
+    })
     
-   	</script>
+   	</script> -->
 
     <!-- bootstrap-daterangepicker -->
     <script>
