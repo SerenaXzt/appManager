@@ -8,8 +8,10 @@ import cn.app.vo.AppInfoVo;
 
 public interface AppInfoService {
 
-	//查询所有的app数据
+	//鏌ヨ鎵�鏈夌殑app鏁版嵁
 	List<AppInfoVo> queryAll();
 	
 	List<AppCategoryVo> queryAllByParentId(Integer parentId);
+	
+	public int addApp(AppInfo appInfo);
 }

@@ -34,4 +34,22 @@ public class AppInfoServiceImpl implements AppInfoService {
 		return appCategoryMapper.selectByParent(parentId);
 	}
 
+	@Override
+	public int addApp(AppInfo app) {
+		int flag = 0;
+		try {
+			flag = appInfoMapper.insert(app);
+			if(flag > 0){
+				System.out.println("add success!");
+			}else{
+				System.out.println("add failed!");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return flag;
+	}
+
 }

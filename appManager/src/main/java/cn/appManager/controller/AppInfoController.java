@@ -18,13 +18,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import cn.app.pojo.AppInfo;
 import cn.app.pojo.DevUser;
 import cn.app.service.appinfo.AppInfoService;
+import cn.app.tools.Constants;
 import cn.app.vo.AppCategoryVo;
 import cn.app.vo.AppInfoVo;
 import cn.app.vo.Msg;
 
 @Controller
 public class AppInfoController {
-	
+
 	@Autowired
 	private AppInfoService appifs;
 
@@ -62,7 +63,7 @@ public class AppInfoController {
 	}
 	
 	
-	@RequestMapping(value="/appsInfo/showCategory/{parentId}",method=RequestMethod.GET)
+	@RequestMapping(value="/showCategory/{parentId}",method=RequestMethod.GET)
 	@ResponseBody
 	public Msg showCategory(@PathVariable Integer parentId){
 		if(parentId != null && parentId>=0){
