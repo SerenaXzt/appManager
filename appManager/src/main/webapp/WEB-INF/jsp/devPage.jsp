@@ -50,7 +50,7 @@
 						</div>
 						<div class="profile_info">
 							<span>Welcome,</span>
-							<h2>${devCode }</h2>
+							<h2>${sessionScope.userSession.devcode }</h2>
 						</div>
 					</div>
 					<!-- /menu profile quick info -->
@@ -61,7 +61,7 @@
 					<div id="sidebar-menu"
 						class="main_menu_side hidden-print main_menu">
 						<div class="menu_section">
-							<h3>${devName }</h3>
+							<h3>${sessionScope.userSession.devname }</h3>
 							<ul class="nav side-menu">
 								<li><a><i class="fa fa-home"></i>App账户管理<span
 										class="fa fa-chevron-down"></span></a>
@@ -73,7 +73,7 @@
 								<li><a><i class="fa fa-edit"></i>App应用管理<span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="form.html">App维护</a></li>
+										<li><a href="appsInfo">App维护</a></li>
 									</ul></li>
 						</div>
 						<div class="menu_section">

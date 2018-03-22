@@ -24,9 +24,9 @@ public class helloWorld {
 		return "index";
 	}*/
 	
-	@RequestMapping("/appInfo")
+	/*@RequestMapping("/appInfo")
 	public String gotoDevPage(){
-		return "appList/devUserAppList";
+		return "appList/devUserAppList";*/
 
 //		App app = appMapper.selectOne(48);
 //		System.out.println(app);
@@ -38,5 +38,8 @@ public class helloWorld {
 		//asdasdsadsa
 		
 		
+	@RequestMapping("/appInfo")
+	public String show(Model model) {
+		return "app_add";
 	}
 }

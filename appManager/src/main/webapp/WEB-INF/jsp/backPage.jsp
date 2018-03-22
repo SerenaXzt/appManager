@@ -50,7 +50,7 @@
 						</div>
 						<div class="profile_info">
 							<span>Welcome,</span>
-							<h2>${usercode }</h2>
+							<h2>${sessionScope.userSession.usercode }</h2>
 						</div>
 					</div>
 					<!-- /menu profile quick info -->
@@ -61,7 +61,7 @@
 					<div id="sidebar-menu"
 						class="main_menu_side hidden-print main_menu">
 						<div class="menu_section">
-							<h3>${username }</h3>
+							<h3>${sessionScope.userSession.username }</h3>
 							<ul class="nav side-menu">
 								<li><a><i class="fa fa-home"></i>App账户管理<span
 										class="fa fa-chevron-down"></span></a>
