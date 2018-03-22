@@ -25,10 +25,6 @@ public class DaoTest {
 		DevUser user = mapper.selectByCodeAndPwd("test001", "123456");
 		System.out.println(user.getDevcode()+"   "+user.getDevname());
 		
-		
-		
-		
-		
 	}
 	
 	
