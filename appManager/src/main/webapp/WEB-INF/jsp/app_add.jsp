@@ -186,7 +186,7 @@
                   </div>
                   <div class="x_content">
                     <br />
-                    <form class="form-horizontal form-label-left" action="${pageContext.request.contextPath }/appAdd" method="post" enctype="multipart/form-data">
+                    <form id="add_APP" class="form-horizontal form-label-left" action="${pageContext.request.contextPath }/appAdd" method="post" enctype="multipart/form-data">
 
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">软件名称*</label>
@@ -240,7 +240,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">一级分类*</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
                           <select id="level1" class="select2_single form-control" name="categorylevel1">
-                            <option>--请选择--</option>
+                            <option value="">--请选择--</option>
                             <option value="1">全部应用</option>
                             <option value="2">全部游戏</option>
                           </select>
@@ -291,7 +291,7 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                          <button type="submit" class="btn btn-success">保存</button>
+                          <button type="submit" class="btn btn-success" id="add_save">保存</button>
                           <button type="submit" class="btn btn-primary">取消</button>
                         </div>
                       </div>

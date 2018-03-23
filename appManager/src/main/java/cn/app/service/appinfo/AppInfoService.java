@@ -18,4 +18,6 @@ public interface AppInfoService {
 	public int deleteApp(Long addId);
 	
 	public int selectBySoftwarename(String softwareName);
+	
+	int deleteVersion(Long id);
 }

@@ -128,7 +128,9 @@ public class AppInfoController {
 	@ResponseBody
 	public Msg deleteApp(@PathVariable("appId") Long appId) {
 		System.out.println("delete===========");
-		if (appifs.deleteApp(appId) > 0) {
+		if (appifs.deleteVersion(appId) > 0 && appifs.deleteApp(appId) > 0) {
+			return Msg.success();
+		}else if(appifs.deleteApp(appId) > 0) {
 			return Msg.success();
 		}
 		return Msg.fail();

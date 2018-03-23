@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import cn.app.dao.AppCategoryMapper;
 import cn.app.dao.AppInfoMapper;
+import cn.app.dao.AppVersionMapper;
 import cn.app.pojo.AppInfo;
 import cn.app.vo.AppCategoryVo;
 import cn.app.vo.AppInfoVo;
@@ -20,6 +21,9 @@ public class AppInfoServiceImpl implements AppInfoService {
 	
 	@Autowired
 	private AppCategoryMapper appCategoryMapper;
+	
+	@Autowired
+	private AppVersionMapper appVersionMapper;
 	
 	@Override
 	public List<AppInfoVo> queryAll() {
@@ -59,9 +63,9 @@ public class AppInfoServiceImpl implements AppInfoService {
 		try {
 			flag = appInfoMapper.deleteByPrimaryKey(appId);
 			if(flag > 0){
-				System.out.println("delete success!");
+				System.out.println("app delete success!");
 			}else{
-				System.out.println("delete failed!");
+				System.out.println("app delete failed!");
 			}
 			
 		} catch (Exception e) {
@@ -80,6 +84,24 @@ public class AppInfoServiceImpl implements AppInfoService {
 				System.out.println("app已存在========");
 			}else{
 				System.out.println("app可以添加========");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return flag;
+	}
+
+	@Override
+	public int deleteVersion(Long id) {
+		int flag = 0;
+		try {
+			flag = appVersionMapper.deleteByPrimaryKey(id);
+			if(flag > 0){
+				System.out.println("version delete success!");
+			}else{
+				System.out.println("version delete failed!");
 			}
 			
 		} catch (Exception e) {

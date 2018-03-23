@@ -11,3 +11,11 @@ $("#softwareName").blur(function(){
 		}
 	})
 });
+/*$("#add_save").click(function(){
+	alert($("#level3").val());
+	if(isNaN($("#level3").val())){
+		$("#level3").val("107");
+		alert($("#level3").val());
+	}
+	$("#add_APP").submit();
+});*/
