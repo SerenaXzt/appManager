@@ -1,5 +1,7 @@
 package cn.app.dao;
 
+import java.util.List;
+
 import cn.app.pojo.DataDictionary;
 
 public interface DataDictionaryMapper {
@@ -14,4 +16,6 @@ public interface DataDictionaryMapper {
     int updateByPrimaryKeySelective(DataDictionary record);
 
     int updateByPrimaryKey(DataDictionary record);
+    
+    List<DataDictionary> queryAllByType();
 }

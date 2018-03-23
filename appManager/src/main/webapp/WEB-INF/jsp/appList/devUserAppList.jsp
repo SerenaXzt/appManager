@@ -17,13 +17,13 @@
 						</div>
 					</div>
 					<hr/>
-					<form action="" class="form-horizontal">
+					<form id="searchApp" action="appsSearch" class="form-horizontal" method="post">
 						<div class="row">
 							<div class="col-md-4">
 								  <div class="form-group">
 								    <label for="inputPassword3" class="col-sm-4 control-label text-right">软件名称</label>
 								    <div class="col-sm-6">
-								      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+								      <input type="text" class="form-control" name="softwarename" placeholder="softwarename">
 								    </div>
 								  </div>
 							</div>
@@ -31,13 +31,12 @@
 								<div class="form-group">
 								    <label for="inputPassword3" class="col-sm-4 control-label text-right">app状态</label>
 								    <div class="col-sm-6">
-								      <select class="form-control input-sm">
-								      	<option>===请选择===</option>
-								      	<option value="1">待审核</option>
-								      	<option value="2">审核通过</option>
-								      	<option value="3">审核未通过</option>
-								      	<option value="4">已上架</option>
-								      	<option value="5">已下架</option>
+								      <select name="appStatus" class="form-control input-sm">
+								      	<option value="">===请选择===</option>
+								      	<c:forEach items="${requestScope.appInfoVoList[0].statusMap['APP_STATUS'] }" var="stat">
+								      		<option value="${stat.valueid }" <c:if test="${stat.valueid == param.appStatus }"> selected='selected' </c:if> >${stat.valuename }</option>
+								      		
+								      	</c:forEach>
 								      </select>
 								    </div>
 								 </div>
@@ -46,11 +45,11 @@
 								<div class="form-group">
 								    <label for="inputPassword3" class="col-sm-4 control-label text-right">所属平台</label>
 								    <div class="col-sm-6">
-								      <select class="form-control input-sm">
-								      	<option>===请选择===</option>
-								      	<option value="1">手机</option>
-								      	<option value="2">平板</option>
-								      	<option value="3">通用</option>
+								      <select name="flatFormId" class="form-control input-sm">
+								      	<option value="">===请选择===</option>
+								      	<c:forEach items="${requestScope.appInfoVoList[0].statusMap['APP_FLATFORM'] }" var="flatform">
+								      		<option value="${flatform.valueid }" <c:if test="${flatform.valueid == param.flatFormId }"> selected='selected' </c:if>>${flatform.valuename }</option>
+								      	</c:forEach>
 								      </select>
 								    </div>
 								 </div>
@@ -62,8 +61,8 @@
 								  <div class="form-group">
 								    <label for="inputPassword3" class="col-sm-4 control-label text-right">一级分类</label>
 								    <div class="col-sm-6">
-								      <select id="level1" class="form-control input-sm" >
-								      	<option>===请选择===</option>
+								      <select name="categoryLevel1" id="level1" class="form-control input-sm" >
+								      	<option value="">===请选择===</option>
 								      	<option value="1">全部应用</option>
 								      	<option value="2">全部游戏</option>
 								      </select>
@@ -74,8 +73,8 @@
 								<div class="form-group">
 								    <label for="inputPassword3" class="col-sm-4 control-label text-right">二级分类</label>
 								    <div class="col-sm-6">
-								      <select id="level2" class="form-control input-sm" >
-								      	<option>===请选择===</option>
+								      <select name="categoryLevel2" id="level2" class="form-control input-sm" >
+								      	<option value="">===请选择===</option>
 								      </select>
 								    </div>
 								 </div>
@@ -84,15 +83,15 @@
 								<div class="form-group">
 								    <label for="inputPassword3" class="col-sm-4 control-label text-right">三级分类</label>
 								    <div class="col-sm-6">
-								      <select id="level3"  class="form-control input-sm">
-								      	<option>===请选择===</option>
+								      <select name="categoryLevel3" id="level3"  class="form-control input-sm">
+								      	<option value="">===请选择===</option>
 								      </select>
 								    </div>
 								 </div>
 							</div>
 						</div>
 						<div class="row">
-							<button class="btn btn-primary">查询</button>
+							<button id="search" class="btn btn-primary">查询</button>
 						</div>
 					</form>
 				</div>
@@ -168,9 +167,10 @@
 				</div>
 <script type="text/javascript" src="statics/jquery/jquery-1.12.4.js"></script>
 <script type="text/javascript" src="statics/common/js/ajaxThreeLevel.js"></script>
-<<<<<<< HEAD
-<%@include file="/statics/common/footer.jsp" %>
-=======
+<script type="text/javascript">
+	$("#search").click(function(){
+		$("#searchApp").submit();
+	})
+</script>
 <%@include file="/statics/common/footer.jsp" %>
     
->>>>>>> branch 'master' of https://github.com/SerenaXzt/appManager.git

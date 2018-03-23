@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import cn.app.criteria.CriteriaApp;
 import cn.app.pojo.AppInfo;
 import cn.app.pojo.DevUser;
 import cn.app.service.appinfo.AppInfoService;
@@ -31,7 +32,7 @@ public class AppInfoController {
 
 	@RequestMapping(value="/appsInfo",method=RequestMethod.GET)
 	public String showAllApp(Model model){
-		List<AppInfoVo> list  = appifs.queryAll();
+		List<AppInfoVo> list  = appifs.queryAll(null);
 		model.addAttribute("appInfoVoList", list);
 		return "appList/devUserAppList";
 	}
@@ -90,8 +91,13 @@ public class AppInfoController {
 		return"/appsInfo";
 	}
 	
-<<<<<<< HEAD
+	//根据条件进行搜索
+	@RequestMapping(value="/appsSearch",method=RequestMethod.POST)
+	public String showAllApp(CriteriaApp ca , Model model){
+		List<AppInfoVo> list  = appifs.queryAll(ca);
+		model.addAttribute("appInfoVoList", list);
+		return "appList/devUserAppList";
+	}
+	
 }
-=======
-}
->>>>>>> branch 'master' of https://github.com/SerenaXzt/appManager.git
+

@@ -5,9 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import cn.app.criteria.CriteriaApp;
 import cn.app.dao.AppCategoryMapper;
 import cn.app.dao.AppInfoMapper;
+import cn.app.dao.DataDictionaryMapper;
 import cn.app.pojo.AppInfo;
+import cn.app.pojo.DataDictionary;
 import cn.app.vo.AppCategoryVo;
 import cn.app.vo.AppInfoVo;
 
@@ -20,12 +23,19 @@ public class AppInfoServiceImpl implements AppInfoService {
 	@Autowired
 	private AppCategoryMapper appCategoryMapper;
 	
+	@Autowired
+	private DataDictionaryMapper dataDictionMpper;
+	
 	@Override
-	public List<AppInfoVo> queryAll() {
+	public List<AppInfoVo> queryAll(CriteriaApp ca) {
 		List<AppCategoryVo> acvList = appCategoryMapper.selectAllCategoryVo();
+		List<DataDictionary> dataList = dataDictionMpper.queryAllByType();
 		AppInfoVo.setCategoryMap(acvList);
-		List<AppInfoVo> appInfoList = appInfoMapper.selectAllApp(null);
-		return appInfoList;
+		AppInfoVo.setStatusMap(dataList);
+		if(ca != null){
+			return appInfoMapper.selectAllApp(ca);
+		}
+		return appInfoMapper.selectAllApp(null);
 	}
 
 	@Override

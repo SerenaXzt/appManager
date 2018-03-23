@@ -1,11 +1,14 @@
 package cn.app.vo;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import cn.app.pojo.DataDictionary;
 
 public class AppInfoVo {
 
@@ -33,7 +36,31 @@ public class AppInfoVo {
 	private String versionNo;
 
 	private static Map<Integer, String> categoryMap = new HashMap<>();
-
+	
+	private static Map<String, Object> statusMap = new HashMap<>();
+	
+	public static void setStatusMap(List<DataDictionary> dataList){
+		
+		List<DataDictionary> status = new ArrayList<>();
+		List<DataDictionary> flatform = new ArrayList<>();
+		for(DataDictionary data : dataList){
+			switch (data.getTypecode()) {
+			case "APP_STATUS":
+				status.add(data);
+				break;
+			case "APP_FLATFORM":
+				flatform.add(data);
+			}
+		}
+		statusMap.put("APP_STATUS", status);
+		statusMap.put("APP_FLATFORM", flatform);
+		
+	}
+	
+	public Map<String, Object> getStatusMap(){
+		return statusMap;
+	}
+	
 	public static void setCategoryMap(List<AppCategoryVo> list) {
 		for (AppCategoryVo acv : list) {
 			categoryMap.put(acv.getId(), acv.getCategoryName());

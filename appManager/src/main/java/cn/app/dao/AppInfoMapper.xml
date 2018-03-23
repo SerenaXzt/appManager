@@ -350,20 +350,20 @@
      		  <if test="id != null and id != 0">
      		  	and aif.id = #{id}
      		  </if>
-     		  <if test="softwarename != null">
-		        and softwareName = #{softwarename,jdbcType=VARCHAR},
+     		  <if test="softwarename != null and softwarename !='' ">
+		        and softwareName like CONCAT('%',#{softwarename},'%')
 		      </if>
 		      <if test="appStatus != null">
-		        and status = #{appStatus,jdbcType=BIGINT},
+		        and status = #{appStatus}
 		      </if>
-		      <if test="categorylevel3 != null">
-		        and categoryLevel3 = #{categorylevel3,jdbcType=BIGINT},
+		      <if test="categoryLevel3 != null">
+		        and categoryLevel3 = #{categoryLevel3,jdbcType=BIGINT}
 		      </if>
-		      <if test="categorylevel1 != null">
-		        and categoryLevel1 = #{categorylevel1,jdbcType=BIGINT},
+		      <if test="categoryLevel1 != null">
+		        and categoryLevel1 = #{categoryLevel1,jdbcType=BIGINT}
 		      </if>
 		      <if test="categoryLevel2 != null">
-		        and categoryLevel2 = #{categoryLevel2,jdbcType=BIGINT},
+		        and categoryLevel2 = #{categoryLevel2,jdbcType=BIGINT}
 		      </if>
      	</where>
 	</select>
