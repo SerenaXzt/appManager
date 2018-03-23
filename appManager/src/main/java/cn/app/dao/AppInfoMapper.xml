@@ -367,5 +367,11 @@
 		      </if>
      	</where>
 	</select>
+	<select id="selectBySoftwarename" resultType="int">
+    select 
+   	count(1)
+    from app_info
+    where softwareName = #{softwareName}
+  </select>
 
 </mapper>

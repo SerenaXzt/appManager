@@ -2,6 +2,7 @@ package cn.app.service.appinfo;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -43,6 +44,42 @@ public class AppInfoServiceImpl implements AppInfoService {
 				System.out.println("add success!");
 			}else{
 				System.out.println("add failed!");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return flag;
+	}
+	
+	@Override
+	public int deleteApp(Long appId) {
+		int flag = 0;
+		try {
+			flag = appInfoMapper.deleteByPrimaryKey(appId);
+			if(flag > 0){
+				System.out.println("delete success!");
+			}else{
+				System.out.println("delete failed!");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return flag;
+	}
+
+	@Override
+	public int selectBySoftwarename(String softwareName) {
+		int flag = 0;
+		try {
+			flag = appInfoMapper.selectBySoftwarename(softwareName);
+			if(flag > 0){
+				System.out.println("app已存在========");
+			}else{
+				System.out.println("app可以添加========");
 			}
 			
 		} catch (Exception e) {

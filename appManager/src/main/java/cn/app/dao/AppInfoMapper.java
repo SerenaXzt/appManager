@@ -20,4 +20,6 @@ public interface AppInfoMapper {
     int updateByPrimaryKey(AppInfo record);
     
     List<AppInfoVo> selectAllApp(CriteriaApp capp);
+    
+    int selectBySoftwarename(String softwareName);
 }

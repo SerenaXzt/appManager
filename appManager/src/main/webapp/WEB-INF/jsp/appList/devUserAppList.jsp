@@ -156,7 +156,7 @@
 											    <li><a href="#">新增版本</a></li>
 											    <li><a href="#">修改</a></li>
 											    <li><a href="#">查看</a></li>
-											    <li><a delete_app="${appInfo.id }" href="#">删除</a></li>
+											    <li><a class="delete" delete_app="${appInfo.id }" href="#">删除</a></li>
 											  </ul>
 											</div>
 										</td>
@@ -166,11 +166,25 @@
 						</div>
 					</div>
 				</div>
+
+<script>
+	$(".delete").click(function(){
+		var delId = $(this).attr("delete_app");
+		$.ajax({
+			url:"${pageContext.request.contextPath }/deleteApp/"+delId,
+			type : "GET",
+			success : function(result){
+				if(result.code == 100){
+					alert("删除成功！");
+					location.reload();
+				}
+			}
+		});
+		
+		return false;
+	});
+</script>
+
 <script type="text/javascript" src="statics/jquery/jquery-1.12.4.js"></script>
 <script type="text/javascript" src="statics/common/js/ajaxThreeLevel.js"></script>
-<<<<<<< HEAD
 <%@include file="/statics/common/footer.jsp" %>
-=======
-<%@include file="/statics/common/footer.jsp" %>
-    
->>>>>>> branch 'master' of https://github.com/SerenaXzt/appManager.git
