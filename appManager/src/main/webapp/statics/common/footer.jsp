@@ -31,6 +31,7 @@
     <!-- iCheck -->
     <script src="statics/gentelella-master/vendors/iCheck/icheck.min.js"></script>
     <!-- bootstrap-daterangepicker -->
+    
    
    
   </body>

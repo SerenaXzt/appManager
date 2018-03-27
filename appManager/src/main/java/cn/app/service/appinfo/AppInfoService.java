@@ -20,4 +20,6 @@ public interface AppInfoService {
 	public int selectBySoftwarename(String softwareName);
 	
 	int deleteVersion(Long id);
+	
+	AppInfo getAppById(Long id);
 }

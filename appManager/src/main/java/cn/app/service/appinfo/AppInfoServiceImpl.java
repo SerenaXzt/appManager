@@ -25,6 +25,9 @@ public class AppInfoServiceImpl implements AppInfoService {
 	@Autowired
 	private AppVersionMapper appVersionMapper;
 	
+	@Autowired
+	AppInfo appInfo;
+	
 	@Override
 	public List<AppInfoVo> queryAll() {
 		List<AppCategoryVo> acvList = appCategoryMapper.selectAllCategoryVo();
@@ -109,6 +112,21 @@ public class AppInfoServiceImpl implements AppInfoService {
 		}
 		
 		return flag;
+	}
+
+	@Override
+	public AppInfo getAppById(Long id) {
+		try {
+			appInfo = appInfoMapper.selectByPrimaryKey(id);
+			if(appInfo == null) {
+				System.out.println("no app match found!");
+			}else {
+				System.out.println("pulling appInfo success!");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return appInfo;
 	}
 
 }

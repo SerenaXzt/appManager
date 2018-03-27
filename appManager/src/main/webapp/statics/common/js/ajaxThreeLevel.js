@@ -9,7 +9,6 @@ $("#level1").change(function(){
 function change2(){
 	var parentId = $("#level1").val();
 	if(parentId != "" && parentId >= 0){
-		alert(parentId);
 		$.ajax({
 			url : "showCategory/"+parentId,
 			type : "GET",
@@ -36,7 +35,6 @@ function change2(){
 function change3(){
 	var parentId = $("#level2").val();
 	if(parentId != "" && parentId >= 0){
-		alert(parentId);
 		$.ajax({
 			url : "showCategory/"+parentId,
 			type : "GET",

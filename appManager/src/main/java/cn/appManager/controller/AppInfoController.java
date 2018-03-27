@@ -145,4 +145,5 @@ public class AppInfoController {
 		}
 		return Msg.success();
 	}
+	
 }
