@@ -12,22 +12,8 @@
       </div>
     </div>
 
-<<<<<<< HEAD
-    <!-- jQuery -->
-    <script src="statics/gentelella-master/vendors/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="statics/gentelella-master/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- FastClick -->
-    <script src="statics/gentelella-master/vendors/fastclick/lib/fastclick.js"></script>
-    <!-- NProgress -->
-    <script src="statics/gentelella-master/vendors/nprogress/nprogress.js"></script>
-    <!-- bootstrap-progressbar -->
-    <script src="statics/gentelella-master/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
-    <!-- iCheck -->
-    <script src="statics/gentelella-master/vendors/iCheck/icheck.min.js"></script>
     <!-- bootstrap-daterangepicker -->
     
-=======
     	<!-- jQuery -->
 	<script src="statics/gentelella-master/vendors/jquery/dist/jquery.min.js"></script>
 	<!-- Bootstrap -->
@@ -69,7 +55,6 @@
 
 	<!-- Custom Theme Scripts -->
 	<script src="statics/gentelella-master/build/js/custom.min.js"></script>
->>>>>>> branch 'master' of https://github.com/SerenaXzt/appManager.git
    
    
   </body>

@@ -28,7 +28,7 @@ public class AppInfoServiceImpl implements AppInfoService {
 	@Autowired
 	private AppVersionMapper appVersionMapper;
 	
-	
+	@Autowired
 	private DataDictionaryMapper dataDictionMpper;
 	
 	@Override
