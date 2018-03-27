@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import cn.app.criteria.CriteriaApp;
 import cn.app.dao.AppCategoryMapper;
 import cn.app.dao.AppInfoMapper;
 import cn.app.dao.DevUserMapper;
@@ -38,10 +39,8 @@ public class DaoTest {
 		
 		List<AppCategoryVo> acvList = appCategoryMapper.selectAllCategoryVo();
 		AppInfoVo.setCategoryMap(acvList);
-		List<AppInfoVo> appInfoList = appInfoMapper.selectAllApp(null);
-		for(AppInfoVo info : appInfoList){
-			System.out.println(info);
-		}
+		System.out.println(appInfoMapper.selectById(55));
+		
 		
 	}
 }

@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import cn.app.criteria.CriteriaApp;
 import cn.app.pojo.AppInfo;
 import cn.app.pojo.DevUser;
 import cn.app.service.appinfo.AppInfoService;
@@ -39,11 +41,47 @@ public class AppInfoController {
 	@Autowired
 	private AppInfoService appifs;
 
-	@RequestMapping(value = "/appsInfo", method = RequestMethod.GET)
-	public String showAllApp(Model model) {
-		List<AppInfoVo> list = appifs.queryAll();
+	
+	@RequestMapping(value="/appsInfo",method=RequestMethod.GET)
+	public String showAllApp(Model model){
+		List<AppInfoVo> list  = appifs.queryAll(null);
 		model.addAttribute("appInfoVoList", list);
+		model.addAttribute("dataDictionaryVo",AppInfoVo.getStatusMap());
 		return "appList/devUserAppList";
+	}
+	
+	@RequestMapping(value="/appsInfo/{appId}",method=RequestMethod.GET)
+	public String showOneApp(@PathVariable("appId")Integer appId,Model model){
+		AppInfoVo appInfoVo  = appifs.queryById(appId);
+		if(appInfoVo != null){
+			model.addAttribute("appInfoVo",appInfoVo);
+		}
+		return "appInfo/info";
+	}
+	
+	@RequestMapping(value="/appsUpdate/{appId}",method=RequestMethod.GET)
+	public String goUpdate(@PathVariable("appId")Integer appId,Model model){
+		AppInfoVo appInfoVo  = appifs.queryById(appId);
+		if(appInfoVo != null){
+			model.addAttribute("appInfoVo",appInfoVo);
+			model.addAttribute("dataDictionaryVo",AppInfoVo.getStatusMap());
+		}
+		return "appInfo/update";
+	}
+	
+	
+
+	@RequestMapping(value="/appsUpdate",method=RequestMethod.PUT)
+	public String updateApp(@RequestParam(value="_status",required=false)Long _status, AppInfo appInfo , HttpSession session){
+		DevUser devuser = (DevUser) session.getAttribute(Constants.USER_SESSION);
+		appInfo.setModifyby(devuser.getId());
+		appInfo.setModifydate(new Date());
+		appInfo.setUpdatedate(new Date());
+		if(_status != null){
+			appInfo.setStatus(_status);
+		}
+		appifs.updateApp(appInfo);
+		return "redirect:/appsInfo";
 	}
 
 	@RequestMapping(value = "/appAdd", method = RequestMethod.GET)
@@ -75,7 +113,7 @@ public class AppInfoController {
 					|| prefix.equalsIgnoreCase("jpeg") || prefix.equalsIgnoreCase("pneg")) {// 上传图片格式不正确
 				String fileName = System.currentTimeMillis() + RandomUtils.nextInt() + "_Personal.jpg";
 				logger.debug("new fileName======== " + attach.getName());
-				File targetFile = new File(path, fileName);
+				File targetFile = new File(path, oldFileName);
 				if (!targetFile.exists()) {
 					targetFile.mkdirs();
 				}
@@ -87,8 +125,8 @@ public class AppInfoController {
 					request.setAttribute("uploadFileError", " * 上传失败！");
 					return "app_add";
 				}
-				logoPicPath = oldFileName;
-				logoLocPath = path + File.separator + fileName;
+				logoPicPath = request.getContextPath()+"/statics/uploadfiles/"+oldFileName;
+				logoLocPath = path + File.separator + oldFileName;
 			} else {
 				request.setAttribute("uploadFileError", " * 上传图片格式不正确");
 				return "app_add";
@@ -135,15 +173,26 @@ public class AppInfoController {
 		}
 		return Msg.fail();
 	}
-
-	@RequestMapping(value="/validate/{name}",method=RequestMethod.GET)
-	@ResponseBody
-	public Msg validate(@PathVariable("name") String softwarename) {
-		if(appifs.selectBySoftwarename(softwarename) > 0) {
-			System.out.println("app名称已存在！");
+	//根据条件进行搜索
+		@RequestMapping(value="/appsSearch",method=RequestMethod.POST)
+		public String showAllApp(CriteriaApp ca , Model model){
+			List<AppInfoVo> list  = appifs.queryAll(ca);
+			model.addAttribute("appInfoVoList", list);
+			model.addAttribute("dataDictionaryVo",AppInfoVo.getStatusMap());
+			return "appList/devUserAppList";
+		}
+		
+		@RequestMapping("/appsPutOrDwon")
+		@ResponseBody
+		public Msg putOrDown(@RequestParam(value="appId",required=true) Integer appId,
+				@RequestParam(value="opt",required=true) Integer opt){
+			if(appId != null && opt !=null ){
+				int count = appifs.modifyAppPutOrDown(appId, opt);
+				if(count > 0){
+					return Msg.success();
+				}
+				return Msg.fail();
+			}
 			return Msg.fail();
 		}
-		return Msg.success();
-	}
-	
 }

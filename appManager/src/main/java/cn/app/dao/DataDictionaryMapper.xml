@@ -138,4 +138,13 @@
       modifyDate = #{modifydate,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  
+  <select id="queryAllByType" resultType="cn.app.pojo.DataDictionary">
+  		select id, typeCode typecode, typeName typename ,valueName valuename,valueId valueid
+  		from data_dictionary
+  		where 
+  		typeCode = 'APP_STATUS'
+  		or
+  		typeCode = 'APP_FLATFORM'
+  </select>
 </mapper>
