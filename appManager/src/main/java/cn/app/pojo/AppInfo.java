@@ -243,4 +243,17 @@ public class AppInfo {
     public void setVersionid(Long versionid) {
         this.versionid = versionid;
     }
+
+	@Override
+	public String toString() {
+		return "AppInfo [id=" + id + ", softwarename=" + softwarename + ", apkname=" + apkname + ", supportrom="
+				+ supportrom + ", interfacelanguage=" + interfacelanguage + ", softwaresize=" + softwaresize
+				+ ", updatedate=" + updatedate + ", devid=" + devid + ", appinfo=" + appinfo + ", status=" + status
+				+ ", onsaledate=" + onsaledate + ", offsaledate=" + offsaledate + ", flatformid=" + flatformid
+				+ ", categorylevel3=" + categorylevel3 + ", downloads=" + downloads + ", createdby=" + createdby
+				+ ", creationdate=" + creationdate + ", modifyby=" + modifyby + ", modifydate=" + modifydate
+				+ ", categorylevel1=" + categorylevel1 + ", categorylevel2=" + categorylevel2 + ", logopicpath="
+				+ logopicpath + ", logolocpath=" + logolocpath + ", versionid=" + versionid + "]";
+	}
+    
 }

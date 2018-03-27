@@ -47,7 +47,12 @@ public class CriteriaApp {
 	}
 
 	public void setCategoryLevel1(Integer categoryLevel1) {
-		this.categoryLevel1 = categoryLevel1;
+		if(categoryLevel1 == 10000){
+			this.categoryLevel1 = null;
+		}else{
+			
+			this.categoryLevel1 = categoryLevel1;
+		}
 	}
 
 	public Integer getCategoryLevel2() {
@@ -55,7 +60,12 @@ public class CriteriaApp {
 	}
 
 	public void setCategoryLevel2(Integer categoryLevel2) {
-		this.categoryLevel2 = categoryLevel2;
+		if(categoryLevel2 == 10000){
+			this.categoryLevel2 = null;
+		}else{
+			
+			this.categoryLevel2 = categoryLevel2;
+		}
 	}
 
 	public Integer getCategoryLevel3() {
@@ -63,7 +73,12 @@ public class CriteriaApp {
 	}
 
 	public void setCategoryLevel3(Integer categoryLevel3) {
-		this.categoryLevel3 = categoryLevel3;
+		if(categoryLevel3 == 10000){
+			this.categoryLevel3 = null;
+		}else{
+			
+			this.categoryLevel3 = categoryLevel3;
+		}
 	}
 
 }

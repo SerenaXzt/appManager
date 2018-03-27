@@ -15,4 +15,17 @@ public interface AppInfoService {
 	List<AppCategoryVo> queryAllByParentId(Integer parentId);
 	
 	public int addApp(AppInfo appInfo);
+	
+	public int deleteApp(Long addId);
+	
+	public int selectBySoftwarename(String softwareName);
+	
+	int deleteVersion(Long id);
+	
+	public int modifyAppPutOrDown(Integer appId, Integer opt);
+	
+	public AppInfoVo queryById(Integer appId);
+	
+	public int updateApp(AppInfo appInfo);
+	
 }

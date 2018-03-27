@@ -4,7 +4,6 @@ public class App {
 
 	private int id;
 	private String softwareName;
-
 	public int getId() {
 		return id;
 	}
@@ -25,5 +24,6 @@ public class App {
 	public String toString() {
 		return "App [id=" + id + ", softwareName=" + softwareName + "]";
 	}
+
 
 }

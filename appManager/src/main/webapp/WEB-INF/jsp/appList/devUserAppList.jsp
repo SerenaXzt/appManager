@@ -33,9 +33,8 @@
 								    <div class="col-sm-6">
 								      <select name="appStatus" class="form-control input-sm">
 								      	<option value="">===请选择===</option>
-								      	<c:forEach items="${requestScope.appInfoVoList[0].statusMap['APP_STATUS'] }" var="stat">
+								      	<c:forEach items="${requestScope.dataDictionaryVo['APP_STATUS'] }" var="stat">
 								      		<option value="${stat.valueid }" <c:if test="${stat.valueid == param.appStatus }"> selected='selected' </c:if> >${stat.valuename }</option>
-								      		
 								      	</c:forEach>
 								      </select>
 								    </div>
@@ -47,7 +46,7 @@
 								    <div class="col-sm-6">
 								      <select name="flatFormId" class="form-control input-sm">
 								      	<option value="">===请选择===</option>
-								      	<c:forEach items="${requestScope.appInfoVoList[0].statusMap['APP_FLATFORM'] }" var="flatform">
+								      	<c:forEach items="${requestScope.dataDictionaryVo['APP_FLATFORM'] }" var="flatform">
 								      		<option value="${flatform.valueid }" <c:if test="${flatform.valueid == param.flatFormId }"> selected='selected' </c:if>>${flatform.valuename }</option>
 								      	</c:forEach>
 								      </select>
@@ -62,7 +61,7 @@
 								    <label for="inputPassword3" class="col-sm-4 control-label text-right">一级分类</label>
 								    <div class="col-sm-6">
 								      <select name="categoryLevel1" id="level1" class="form-control input-sm" >
-								      	<option value="">===请选择===</option>
+								      	<option value="10000">===请选择===</option>
 								      	<option value="1">全部应用</option>
 								      	<option value="2">全部游戏</option>
 								      </select>
@@ -74,7 +73,7 @@
 								    <label for="inputPassword3" class="col-sm-4 control-label text-right">二级分类</label>
 								    <div class="col-sm-6">
 								      <select name="categoryLevel2" id="level2" class="form-control input-sm" >
-								      	<option value="">===请选择===</option>
+								      	<option value="10000">===请选择===</option>
 								      </select>
 								    </div>
 								 </div>
@@ -84,7 +83,7 @@
 								    <label for="inputPassword3" class="col-sm-4 control-label text-right">三级分类</label>
 								    <div class="col-sm-6">
 								      <select name="categoryLevel3" id="level3"  class="form-control input-sm">
-								      	<option value="">===请选择===</option>
+								      	<option value="10000">===请选择===</option>
 								      </select>
 								    </div>
 								 </div>
@@ -132,7 +131,7 @@
 											${appInfo.categorylevel3}
 											</small>
 										</td>
-										<td><small>${appInfo.status }</small></td>
+										<td><span>${appInfo.status }</span></td>
 										<td><small>${appInfo.downloads }</small></td>
 										<td><small>${appInfo.versionNo }</small></td>
 										<td>
@@ -141,21 +140,24 @@
 											  	  操作
 											    <span class="caret"></span>
 											  </button>
+											  <input type="hidden" name="appId" value="${appInfo.id }" />
 											  <ul class="dropdown-menu" aria-labelledby="dLabel">
-											    <li >
-											    	<a data-toggle="tooltip" href="#">下架</a>
-											    	<div class="tooltip top" role="tooltip">
-													  <div class="tooltip-arrow"></div>
-													  <div class="tooltip-inner">
-													    Some tooltip text!
-													  </div>
-													</div>
-											    </li>
+											  	<c:choose>
+											  		<c:when test="${appInfo.statusVo==1 || appInfo.statusVo==3 }">
+											  			<li><a href="#">修改（已有版本）</a></li>
+											  		</c:when>
+											  		<c:when test="${appInfo.statusVo==2 || appInfo.statusVo==5 }">
+											  			<li><a class="putAway" href="#">上架</a></li>
+											  		</c:when>
+											  		<c:when test="${appInfo.statusVo==2 || appInfo.statusVo==4 }">
+											  			 <li><a class="soldOut" href="#">下架</a></li>
+											  		</c:when>
+											  	</c:choose>
 											    <li role="separator" class="divider"></li>
 											    <li><a href="#">新增版本</a></li>
-											    <li><a href="#">修改</a></li>
-											    <li><a href="#">查看</a></li>
-											    <li><a delete_app="${appInfo.id }" href="#">删除</a></li>
+											    <li><a href="appsUpdate/${appInfo.id }">修改</a></li>
+											    <li><a href="appsInfo/${appInfo.id }">查看</a></li>
+											    <li><a class="delete" delete_app="${appInfo.id }" href="#">删除</a></li>
 											  </ul>
 											</div>
 										</td>
@@ -165,6 +167,26 @@
 						</div>
 					</div>
 				</div>
+<script type="text/javascript">
+	$(".delete").click(function(){
+		var delId = $(this).attr("delete_app");
+		$.ajax({
+			url:"${pageContext.request.contextPath }/deleteApp/"+delId,
+			type : "GET",
+			success : function(result){
+				if(result.code == 100){
+					alert("删除成功！");
+					location.reload();
+				}else{
+					alert("删除失败！");
+					location.reload();
+				}
+			}
+		});
+		return false;
+	});
+</script>
+
 <script type="text/javascript" src="statics/jquery/jquery-1.12.4.js"></script>
 <script type="text/javascript" src="statics/common/js/ajaxThreeLevel.js"></script>
 <script type="text/javascript">
@@ -173,4 +195,3 @@
 	})
 </script>
 <%@include file="/statics/common/footer.jsp" %>
-    

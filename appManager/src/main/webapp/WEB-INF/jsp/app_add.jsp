@@ -80,7 +80,7 @@
 								<li><a><i class="fa fa-edit"></i>App应用管理<span
 										class="fa fa-chevron-down"></span></a>
 									<ul class="nav child_menu">
-										<li><a href="form.html">App维护</a></li>
+										<li><a href="appsInfo">App维护</a></li>
 									</ul></li>
 						</div>
 						<div class="menu_section">
@@ -186,12 +186,13 @@
                   </div>
                   <div class="x_content">
                     <br />
-                    <form class="form-horizontal form-label-left" action="${pageContext.request.contextPath }/appAdd" method="post">
+                    <form id="add_APP" class="form-horizontal form-label-left" action="${pageContext.request.contextPath }/appAdd" method="post" enctype="multipart/form-data">
 
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">软件名称*</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input type="text" class="form-control" placeholder="请输入软件名称" name="softwarename">
+                          <input type="text" id="softwareName" class="form-control" placeholder="请输入软件名称" name="softwarename">
+                        	<span></span>
                         </div>
                       </div>
                       <div class="form-group">
@@ -238,17 +239,17 @@
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">一级分类*</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <select class="select2_single form-control" name="categorylevel1">
-                            <option>--请选择--</option>
-                            <option value="">全部应用</option>
-                            <option>全部游戏</option>
+                          <select id="level1" class="select2_single form-control" name="categorylevel1">
+                            <option value="">--请选择--</option>
+                            <option value="1">全部应用</option>
+                            <option value="2">全部游戏</option>
                           </select>
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">二级分类*</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <select class="select2_single form-control" name="categorylevel2">
+                          <select id="level2" class="select2_single form-control" name="categorylevel2">
                             <option></option>
                           </select>
                         </div>
@@ -256,7 +257,7 @@
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">三级分类*</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <select class="select2_single form-control" name="categorylevel3">
+                          <select id="level3" class="select2_single form-control" name="categorylevel3">
                             <option></option>
                           </select>
                         </div>
@@ -266,6 +267,8 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">APP状态*</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
                           <input type="text" class="form-control" readonly="readonly" placeholder="待审核">
+                          <input type="hidden" name="status" value="1"/>
+                          
                         </div>
                       </div>
                       <div class="form-group">
@@ -278,7 +281,7 @@
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">选择图片*</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input type="file" class="form-control" placeholder="Default Input" name="logopicpath">
+                          <input type="file" class="form-control" placeholder="Default Input" name="logoPicPath" id="logoPicPath">
                         </div>
                       </div>
                       
@@ -288,7 +291,7 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                          <button type="submit" class="btn btn-success">保存</button>
+                          <button type="submit" class="btn btn-success" id="add_save">保存</button>
                           <button type="submit" class="btn btn-primary">取消</button>
                         </div>
                       </div>
@@ -355,36 +358,9 @@
     <script src="statics/gentelella-master/build/js/custom.min.js"></script>
     
     <!-- app_add -->
-    <!-- <script>
-    $("#firstcat").ready(function(){
-    function CategoryList(obj, selectId) {
-        var parentId = $(obj).val();
-        $.ajax({
-            url: contextPath + "/appsInfo/showCategory/{parentId}",
-            method: "get",
-            data: {
-                action: "showCategory",
-                parentId: parentId
-            },
-            success: function (jsonStr) {
-                var result = eval("(" + jsonStr + ")");
-                //状态判断
-                if (result.status == 1) {
-                    var options = "<option value=''>" + "请选择..." + "</option>";
-                    for (var i = 0; i < result.data.length; i++) {
-                        var option = "<option value=" + result.data[i].id + ">" + result.data[i].name + "</option>";
-                        options = options + option;
-                    }
-                    $("#" + selectId).html(options);
-                }
-            }
-        });
-    }
-    	
-    })
-    
-   	</script> -->
-
+    <script type="text/javascript" src="statics/common/js/ajaxThreeLevel.js"></script>
+	<script type="text/javascript" src="statics/jquery/jquery-1.12.4.js"></script>
+	<script type="text/javascript" src="statics/common/js/validate.js"></script>
     <!-- bootstrap-daterangepicker -->
     <script>
       $(document).ready(function() {

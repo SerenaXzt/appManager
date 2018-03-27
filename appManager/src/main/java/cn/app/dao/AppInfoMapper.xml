@@ -336,7 +336,10 @@
 	    <result column="categoryLevel1" jdbcType="BIGINT" property="categorylevel1" />
 	    <result column="categoryLevel2" jdbcType="BIGINT" property="categorylevel2" />
 	    <result column="versionNo" jdbcType="VARCHAR" property="versionNo" />
-		
+		<result column="logoPicPath" jdbcType="VARCHAR" property="logopicpath" />
+    	<result column="logoLocPath" jdbcType="VARCHAR" property="logolocpath" />
+		<result column="supportROM" jdbcType="VARCHAR" property="supportrom" />
+		<result column="interfaceLanguage" jdbcType="VARCHAR" property="interfacelanguage" />
 	</resultMap>
 	<select id="selectAllApp" resultMap="appInfoVo">
 		select  
@@ -366,6 +369,39 @@
 		        and categoryLevel2 = #{categoryLevel2,jdbcType=BIGINT}
 		      </if>
      	</where>
+	</select>
+	<select id="selectBySoftwarename" resultType="int">
+    select 
+   	count(1)
+    from app_info
+    where softwareName = #{softwareName}
+  </select>
+  
+  <update id="updateByPutOrDown">
+		update app_info
+		<set>
+			<if test="opt == 1 and opt != null">
+				status = 4
+			</if>
+			<if test="opt == 0 and opt != null">
+				status = 5
+			</if>
+		</set>
+		where id = #{appId}
+	</update>
+	
+	<select id="selectById" resultMap="appInfoVo">
+		select  
+		aif.id, softwareName, APKName, softwareSize,
+		status,flatformId, categoryLevel3, downloads, 
+		categoryLevel1, categoryLevel2, appInfo,
+		logoPicPath, logoLocPath,supportROM,
+		interfaceLanguage,
+		aver.versionNo
+		from app_info aif
+		LEFT OUTER JOIN app_version aver
+		on aif.versionId = aver.id
+		where aif.id = #{appId}
 	</select>
 
 </mapper>
