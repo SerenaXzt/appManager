@@ -18,6 +18,7 @@
 					</div>
 					<hr/>
 					<form id="searchApp" action="appsSearch" class="form-horizontal" method="post">
+						<input type="hidden" id="pageNum" name="pageNum" value="${requestScope.page.pageNum }"/>
 						<div class="row">
 							<div class="col-md-4">
 								  <div class="form-group">
@@ -117,7 +118,7 @@
 									<th>最新版本号</th>
 									<th>操作</th>
 								</tr>
-								<c:forEach items="${requestScope.appInfoVoList }" var="appInfo">
+								<c:forEach items="${requestScope.page.list }" var="appInfo">
 									<tr>
 										<td><small>${appInfo.softwarename }</small></td>
 										<td><small>${appInfo.apkname }</small></td>
@@ -167,6 +168,52 @@
 						</div>
 					</div>
 				</div>
+				<div class="container">
+					<div class="row">
+						<div class="col-md-4">
+						<span>
+						共有${requestScope.page.pages==null?0:requestScope.page.pages }页，
+						当前第${requestScope.page.pageNum==null?0:requestScope.page.pageNum }页 ，
+						总记录数为${requestScope.page.total==null?0:requestScope.page.total }</span>
+						</div>
+						<div class="col-md-4 col-md-offset-4">
+							<nav aria-label="Page navigation">
+							  <ul class="pagination">
+							   <li <c:if test="${requestScope.page.pageNum == 1}">class="disabled"</c:if> >
+							      <a class="showPage" pageNum="1" href="#">
+							       	 首页
+							      </a>
+							    </li>
+							  <c:if test="${requestScope.page.hasPreviousPage}">
+							  	 <li <c:if test="${!requestScope.page.hasPreviousPage}">class="disabled"</c:if> >
+							      <a class="showPage" pageNum="${requestScope.page.pageNum - 1 }" href="#" aria-label="Previous">
+							        <span aria-hidden="true">&laquo;</span>
+							      </a>
+							    </li>
+							  </c:if>
+							  <c:forEach items="${requestScope.page.navigatepageNums}" var="num">
+							  
+							    <li <c:if test="${requestScope.page.pageNum == num}">class="active"</c:if>>
+							    	<a class="showPage" pageNum="${num }" href="#">${num }</a>
+							    </li>
+							  </c:forEach>
+							    <c:if test="${requestScope.page.hasNextPage}">
+								    <li>
+								      <a pageNum="${requestScope.page.pageNum }" class="showPage" href="#" aria-label="Next">
+								        <span aria-hidden="true">&raquo;</span>
+								      </a>
+								    </li>
+							    </c:if>
+							    <li <c:if test="${requestScope.page.pageNum == requestScope.page.pages}">class="disabled"</c:if>>
+							      <a class="showPage" pageNum="${requestScope.page.pages}" href="#">
+							       	 末页
+							      </a>
+							    </li>
+							  </ul>
+							</nav>
+						</div>
+					</div>
+				</div>
 <script type="text/javascript">
 	$(".delete").click(function(){
 		var delId = $(this).attr("delete_app");
@@ -185,6 +232,14 @@
 		});
 		return false;
 	});
+	$(".showPage").click(function(){
+		var page = $(this).attr("pageNum");
+		$("#pageNum").val(page);
+		$("#searchApp").submit();
+		return false;
+	})
+	
+	
 </script>
 
 <script type="text/javascript" src="statics/jquery/jquery-1.12.4.js"></script>

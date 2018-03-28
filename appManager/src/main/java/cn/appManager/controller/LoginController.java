@@ -8,10 +8,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.app.pojo.DevUser;
 import cn.app.service.user.DevUserService;
 import cn.app.tools.Constants;
+import cn.app.vo.Msg;
 
 
 @Controller
@@ -35,17 +37,24 @@ public class LoginController {
 			HttpSession session,
 			Model model) {
 		System.out.println("login ============ " );
-		//µ÷ÓÃservice·½·¨£¬½øÐÐÓÃ»§Æ¥Åä
+		//ï¿½ï¿½ï¿½ï¿½serviceï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½Æ¥ï¿½ï¿½
 		DevUser du = devuserService.login(userCode, userPassword);
-		if(null != du){//µÇÂ¼³É¹¦
-			//·ÅÈësession
+		if(null != du){//ï¿½ï¿½Â¼ï¿½É¹ï¿½
+			//ï¿½ï¿½ï¿½ï¿½session
 			session.setAttribute(Constants.USER_SESSION, du);
 			
 			return "devPage";
 		}else{
-			//Ò³ÃæÌø×ª£¨devLogin.jsp£©´ø³öÌáÊ¾ÐÅÏ¢--×ª·¢
-			model.addAttribute("error", "ÓÃ»§Ãû»òÃÜÂë²»ÕýÈ·");
+			//Ò³ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½devLogin.jspï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Ï¢--×ªï¿½ï¿½
+			model.addAttribute("error", "ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ë²»ï¿½ï¿½È·");
 			return "redirect:/devLogin.jsp";
 		}
+	}
+	
+	@RequestMapping(value="/devLogin/logOut",method=RequestMethod.GET)
+	@ResponseBody
+	public Msg logOut(HttpSession session){
+		session.removeAttribute(Constants.USER_SESSION);
+		return Msg.success();
 	}
 }

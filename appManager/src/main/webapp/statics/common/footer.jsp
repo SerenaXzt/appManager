@@ -54,6 +54,5 @@
 	<!-- Custom Theme Scripts -->
 	<script src="statics/gentelella-master/build/js/custom.min.js"></script>
    
-   
   </body>
 </html>

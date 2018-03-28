@@ -2,6 +2,8 @@ package cn.app.service.appinfo;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,16 +33,23 @@ public class AppInfoServiceImpl implements AppInfoService {
 	@Autowired
 	private DataDictionaryMapper dataDictionMpper;
 	
-	@Override
-	public List<AppInfoVo> queryAll(CriteriaApp ca) {
+	@PostConstruct
+	public void init(){
 		List<AppCategoryVo> acvList = appCategoryMapper.selectAllCategoryVo();
 		List<DataDictionary> dataList = dataDictionMpper.queryAllByType();
 		AppInfoVo.setCategoryMap(acvList);
 		AppInfoVo.setStatusMap(dataList);
+	}
+	
+	@Override
+	public List<AppInfoVo> queryAll(CriteriaApp ca) {
+		List<AppInfoVo> list;
 		if(ca != null){
-			return appInfoMapper.selectAllApp(ca);
+			list = appInfoMapper.selectAllApp(ca);
+		}else{
+			list = appInfoMapper.selectAllApp(null);
 		}
-		return appInfoMapper.selectAllApp(null);
+		return list;
 	}
 
 	@Override

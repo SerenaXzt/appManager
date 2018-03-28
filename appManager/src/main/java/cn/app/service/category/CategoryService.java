@@ -7,4 +7,6 @@ import cn.app.vo.AppCategoryVo;
 public interface CategoryService {
 
 	List<AppCategoryVo> queryByParent(Integer parentId);
+	
+	List<AppCategoryVo> queryAllCategory();
 }

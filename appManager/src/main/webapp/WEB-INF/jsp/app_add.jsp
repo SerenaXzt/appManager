@@ -5,6 +5,7 @@
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
 %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -46,7 +47,6 @@
 						<a href="index.html" class="site_title"><i class="fa fa-paw"></i>
 							<span>App Manager</span></a>
 					</div>
-
 					<div class="clearfix"></div>
 
 					<!-- menu profile quick info -->
@@ -191,45 +191,50 @@
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">软件名称*</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input type="text" id="softwareName" class="form-control" placeholder="请输入软件名称" name="softwarename">
+                          <input type="text" id="softwareName" required="required" class="form-control" placeholder="请输入软件名称" name="softwarename">
                         	<span></span>
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">APK名称*</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input type="text" class="form-control" placeholder="请输入APK名称" name="apkname">
+                          <input id="apkName" type="text" required="required" class="form-control" placeholder="请输入APK名称" name="apkname">
+                          <span></span>
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">支持ROM*</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input type="text" class="form-control" placeholder="请输入支持的ROM" name="supportrom">
+                          <input type="text" id="supportRom" required="required" class="form-control" placeholder="请输入支持的ROM" name="supportrom">
+                        	 <span></span>
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">界面语言*</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input type="text" class="form-control" placeholder="请输入软件支持的界面语言" name="interfacelanguage">
+                          <input type="text" id="interfaceLanguage" class="form-control" required="required" placeholder="请输入软件支持的界面语言" name="interfacelanguage">
+                        	 <span></span>
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">软件大小*</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input type="text" class="form-control" placeholder="请输入软件大小，单位为Mb" name="softwaresize">
+                          <input type="text" id="softwareSize" class="form-control" required="required" placeholder="请输入软件大小，单位为Mb" name="softwaresize">
+                       		 <span></span>
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">下载次数*</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input type="text" class="form-control" placeholder="请输入下载次数" name="downloads">
+                          <input type="text" id="downloads" class="form-control" required="required" placeholder="请输入下载次数" name="downloads">
+                        	 <span></span>
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">所属平台*</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <select class="form-control" name="flatformid">
-                            <option>--请选择--</option>
+                          <select class="form-control" name="flatformid" required="required">
+                            <option value="10000">--请选择--</option>
                             <option value="2">通用</option>
                             <option value="1">手机</option>
                             <option value="3">平板</option>
@@ -240,7 +245,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">一级分类*</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
                           <select id="level1" class="select2_single form-control" name="categorylevel1">
-                            <option value="">--请选择--</option>
+                            <option value="10000">--请选择--</option>
                             <option value="1">全部应用</option>
                             <option value="2">全部游戏</option>
                           </select>
@@ -275,7 +280,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">应用简介*<span class="required"></span>
                         </label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <textarea class="form-control" rows="3" placeholder="请输入本软件的相关信息，本信息作为软件的详细信息进行软件的介绍" name="appinfo"></textarea>
+                          <textarea class="form-control" rows="3" id="appInfo" required="required" placeholder="请输入本软件的相关信息，本信息作为软件的详细信息进行软件的介绍" name="appinfo"></textarea>
                         </div>
                       </div>
                       <div class="form-group">
@@ -284,27 +289,18 @@
                           <input type="file" class="form-control" placeholder="Default Input" name="logoPicPath" id="logoPicPath">
                         </div>
                       </div>
-                      
-
-                      
-                      
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                          <button type="submit" class="btn btn-success" id="add_save">保存</button>
-                          <button type="submit" class="btn btn-primary">取消</button>
+                          <button type="button" class="btn btn-success" id="add_save">保存</button>
+                          <button type="reset" class="btn btn-primary">重置</button>
                         </div>
                       </div>
-
                     </form>
                   </div>
                 </div>
               </div>
-
-
-              
             </div>
-
           </div>
         </div>
         <!-- /page content -->

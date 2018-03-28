@@ -24,6 +24,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+
 import cn.app.criteria.CriteriaApp;
 import cn.app.pojo.AppInfo;
 import cn.app.pojo.DevUser;
@@ -43,9 +46,13 @@ public class AppInfoController {
 
 	
 	@RequestMapping(value="/appsInfo",method=RequestMethod.GET)
-	public String showAllApp(Model model){
+	public String showAllApp(
+			@RequestParam(value="pageNum",required=false,defaultValue="1")Integer pageNum,
+			Model model,HttpSession session){
+		PageHelper.startPage(pageNum, 4);
 		List<AppInfoVo> list  = appifs.queryAll(null);
-		model.addAttribute("appInfoVoList", list);
+		PageInfo<AppInfoVo> page = new PageInfo<>(list,4);
+		model.addAttribute("page", page);
 		model.addAttribute("dataDictionaryVo",AppInfoVo.getStatusMap());
 		return "appList/devUserAppList";
 	}
@@ -175,9 +182,11 @@ public class AppInfoController {
 	}
 	//根据条件进行搜索
 		@RequestMapping(value="/appsSearch",method=RequestMethod.POST)
-		public String showAllApp(CriteriaApp ca , Model model){
+		public String showAllApp(@RequestParam(value="pageNum",required=true,defaultValue="1") Integer pageNum,CriteriaApp ca , Model model){
+			PageHelper.startPage(pageNum, 4);
 			List<AppInfoVo> list  = appifs.queryAll(ca);
-			model.addAttribute("appInfoVoList", list);
+			PageInfo page = new PageInfo<>(list,4);
+			model.addAttribute("page", page);
 			model.addAttribute("dataDictionaryVo",AppInfoVo.getStatusMap());
 			return "appList/devUserAppList";
 		}

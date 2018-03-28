@@ -16,38 +16,43 @@
          <div class="form-group">
            <label class="control-label col-md-3 col-sm-3 col-xs-12">软件名称*</label>
            <div class="col-md-9 col-sm-9 col-xs-12">
-             <input type="text" name="softwarename" class="form-control" value="${requestScope.appInfoVo.softwarename }" >
+             <input type="text" id="softwareName" name="softwarename" class="form-control" value="${requestScope.appInfoVo.softwarename }" >
            	<span></span>
            </div>
          </div>
          <div class="form-group">
            <label class="control-label col-md-3 col-sm-3 col-xs-12">APK名称*</label>
            <div class="col-md-9 col-sm-9 col-xs-12">
-             <input type="text" name="apkname" class="form-control" readonly="readonly" value="${requestScope.appInfoVo.apkname }">
+             <input type="text" id="apkName" name="apkname" class="form-control" readonly="readonly" value="${requestScope.appInfoVo.apkname }">
+           		<span></span>
            </div>
          </div>
          <div class="form-group">
            <label class="control-label col-md-3 col-sm-3 col-xs-12">支持ROM*</label>
            <div class="col-md-9 col-sm-9 col-xs-12">
-             <input type="text" name="supportrom" class="form-control" value="${requestScope.appInfoVo.supportrom}">
+             <input type="text" id="supportRom" name="supportrom" class="form-control" value="${requestScope.appInfoVo.supportrom}">
+           		<span></span>
            </div>
          </div>
          <div class="form-group">
            <label class="control-label col-md-3 col-sm-3 col-xs-12">界面语言*</label>
            <div class="col-md-9 col-sm-9 col-xs-12">
-             <input type="text" name="interfacelanguage" class="form-control" value="${requestScope.appInfoVo.interfacelanguage}">
+             <input type="text" id="interfaceLanguage" name="interfacelanguage" class="form-control" value="${requestScope.appInfoVo.interfacelanguage}">
+           		<span></span>
            </div>
          </div>
          <div class="form-group">
            <label class="control-label col-md-3 col-sm-3 col-xs-12">软件大小*</label>
            <div class="col-md-9 col-sm-9 col-xs-12">
-             <input type="text" name="softwaresize" class="form-control" value="${requestScope.appInfoVo.softwaresize}">
+             <input type="text" id="softwareSize" name="softwaresize" class="form-control" value="${requestScope.appInfoVo.softwaresize}">
+           		<span></span>
            </div>
          </div>
          <div class="form-group">
            <label class="control-label col-md-3 col-sm-3 col-xs-12">下载次数*</label>
            <div class="col-md-9 col-sm-9 col-xs-12">
-             <input type="text" name="downloads" class="form-control" value="${requestScope.appInfoVo.downloads}">
+             <input type="text" id="downloads" name="downloads" class="form-control" value="${requestScope.appInfoVo.downloads}">
+           		<span></span>
            </div>
          </div>
          <div class="form-group">
@@ -181,4 +186,5 @@
 	});
 </script>
 <script type="text/javascript" src="statics/common/js/ajaxThreeLevel.js"></script>
+<script type="text/javascript" src="statics/common/js/validate.js"></script>
 <%@include file="/statics/common/footer.jsp" %>
