@@ -40,6 +40,6 @@ public class helloWorld {
 		
 	@RequestMapping("/appInfo")
 	public String show(Model model) {
-		return "app_add";
+		return "/appInfo/version";
 	}
 }

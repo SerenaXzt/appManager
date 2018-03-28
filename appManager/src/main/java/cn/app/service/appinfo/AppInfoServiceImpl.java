@@ -100,9 +100,9 @@ public class AppInfoServiceImpl implements AppInfoService {
 		try {
 			flag = appInfoMapper.selectBySoftwarename(softwareName);
 			if(flag > 0){
-				System.out.println("app�Ѵ���========");
+				System.out.println("app锟窖达拷锟斤拷========");
 			}else{
-				System.out.println("app�������========");
+				System.out.println("app锟斤拷锟斤拷锟斤拷锟�========");
 			}
 			
 		} catch (Exception e) {
@@ -130,7 +130,7 @@ public class AppInfoServiceImpl implements AppInfoService {
 		return flag;
 	}
 
-	@Override
+
 	public int modifyAppPutOrDown(Integer appId, Integer opt) {
 		
 		return appInfoMapper.updateByPutOrDown(appId, opt);
@@ -149,5 +149,6 @@ public class AppInfoServiceImpl implements AppInfoService {
 		}
 		return 0;
 	}
+
 
 }

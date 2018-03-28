@@ -204,16 +204,4 @@ public class AppInfoController {
 			}
 			return Msg.fail();
 		}
-	
-
-
-	@RequestMapping(value="/validate/{name}",method=RequestMethod.GET)
-	@ResponseBody
-	public Msg validate(@PathVariable("name") String softwarename) {
-		if(appifs.selectBySoftwarename(softwarename) > 0) {
-			System.out.println("app名称已存在！");
-			return Msg.fail();
-		}
-		return Msg.success();
-	}
 }

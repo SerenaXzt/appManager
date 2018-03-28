@@ -12,6 +12,8 @@
       </div>
     </div>
 
+    <!-- bootstrap-daterangepicker -->
+    
     	<!-- jQuery -->
 	<script src="statics/gentelella-master/vendors/jquery/dist/jquery.min.js"></script>
 	<!-- Bootstrap -->
