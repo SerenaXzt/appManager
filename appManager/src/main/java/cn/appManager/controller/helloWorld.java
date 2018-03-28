@@ -38,8 +38,8 @@ public class helloWorld {
 		//asdasdsadsa
 		
 		
-//	@RequestMapping("/appInfo")
-//	public String show(Model model) {
-//		return "app_modify";
-//	}
+	@RequestMapping("/appInfo")
+	public String show(Model model) {
+		return "/appInfo/version";
+	}
 }

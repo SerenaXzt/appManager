@@ -185,4 +185,21 @@
       apkFileName = #{apkfilename,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  <resultMap id="VersionResultMap" type="cn.app.vo.AppVersionVo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="appId" jdbcType="BIGINT" property="id" />
+    <result column="versionNo" jdbcType="VARCHAR" property="versionNo" />
+    <result column="publishStatus" jdbcType="BIGINT" property="publishStatus" />
+    <result column="versionSize" jdbcType="DECIMAL" property="versionSize" />
+    <result column="modifyDate" jdbcType="TIMESTAMP" property="modifyDate" />
+    <result column="apkFileName" jdbcType="VARCHAR" property="apkFileName" />
+  </resultMap>
+  <select id="selectById" parameterType="java.lang.Long" resultMap="VersionResultMap">
+    select 
+	softwareName,versionNo,versionSize,publishStatus,apkFileName,a_ver.modifyDate,appId
+    from app_version a_ver,app_info a_in
+	where a_ver.appId = a_in.id
+	and a_in.id = #{id,jdbcType=BIGINT}
+	order by a_ver.id desc
+  </select>
 </mapper>

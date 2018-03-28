@@ -1,6 +1,9 @@
 package cn.app.dao;
 
+import java.util.List;
+
 import cn.app.pojo.AppVersion;
+import cn.app.vo.AppVersionVo;
 
 public interface AppVersionMapper {
     int deleteByPrimaryKey(Long id);
@@ -14,4 +17,6 @@ public interface AppVersionMapper {
     int updateByPrimaryKeySelective(AppVersion record);
 
     int updateByPrimaryKey(AppVersion record);
+    
+    List<AppVersionVo> selectById(Long id);
 }

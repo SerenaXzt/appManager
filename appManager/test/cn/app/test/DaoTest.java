@@ -9,11 +9,13 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import cn.app.criteria.CriteriaApp;
 import cn.app.dao.AppCategoryMapper;
 import cn.app.dao.AppInfoMapper;
+import cn.app.dao.AppVersionMapper;
 import cn.app.dao.DevUserMapper;
 import cn.app.pojo.AppInfo;
 import cn.app.pojo.DevUser;
 import cn.app.vo.AppCategoryVo;
 import cn.app.vo.AppInfoVo;
+import cn.app.vo.AppVersionVo;
 
 public class DaoTest {
 
@@ -40,6 +42,18 @@ public class DaoTest {
 		List<AppCategoryVo> acvList = appCategoryMapper.selectAllCategoryVo();
 		AppInfoVo.setCategoryMap(acvList);
 		System.out.println(appInfoMapper.selectById(55));
+		
+		
+	}
+	
+	@Test
+	public void testApp2(){
+		ApplicationContext context = 
+				new ClassPathXmlApplicationContext("applicationContext-mybatis.xml");
+		AppVersionMapper appVersionMapper = (AppVersionMapper) context.getBean("appVersionMapper");
+		
+		List<AppVersionVo> avList = appVersionMapper.selectById(58L);
+		System.out.println(avList.get(0).getId());
 		
 		
 	}

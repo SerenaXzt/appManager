@@ -154,7 +154,7 @@
 											  		</c:when>
 											  	</c:choose>
 											    <li role="separator" class="divider"></li>
-											    <li><a href="#">新增版本</a></li>
+											    <li><a href="appVersion/${appInfo.id }">新增版本</a></li>
 											    <li><a href="appsUpdate/${appInfo.id }">修改</a></li>
 											    <li><a href="appsInfo/${appInfo.id }">查看</a></li>
 											    <li><a class="delete" delete_app="${appInfo.id }" href="#">删除</a></li>
