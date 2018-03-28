@@ -33,7 +33,7 @@
     <td><a href="${pageContext.request.contextPath }/download?fileName=${appVersion.apkFileName }">${appVersion.apkFileName }</a></td>
     <td><fmt:formatDate value="${appVersion.modifyDate }" pattern="yyyy-MM-dd" /></td>
   </tr>
-	</c:forEach>
+	</c:forEach> 
 </table>
 <form id="add_version" class="form-horizontal form-label-left" action="${pageContext.request.contextPath }/addVersion" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="appid" value="${requestScope.appId }"/>
