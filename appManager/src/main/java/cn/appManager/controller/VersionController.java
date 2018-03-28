@@ -60,39 +60,39 @@ public class VersionController {
 
 		String apkFileName = null;
 		String apkLocPath = null;
-		// 判断文件是否为空
+		// 锟叫讹拷锟侥硷拷锟角凤拷为锟斤拷
 		if (!attach.isEmpty()) {
 			String path = request.getSession().getServletContext()
 					.getRealPath("statics" + File.separator + "uploadfiles");
 			logger.info("uploadFile path ============== > " + path);
-			String oldFileName = attach.getOriginalFilename();// 原文件名
+			String oldFileName = attach.getOriginalFilename();// 原锟侥硷拷锟斤拷
 			logger.info("uploadFile oldFileName ============== > " + oldFileName);
-			String suffix = FilenameUtils.getExtension(oldFileName);// 原文件后缀
+			String suffix = FilenameUtils.getExtension(oldFileName);// 原锟侥硷拷锟斤拷缀
 			logger.debug("uploadFile prefix============> " + suffix);
 			int filesize = 500000000;
 			logger.debug("uploadFile size============> " + attach.getSize());
-			if (attach.getSize() > filesize) {// 上传大小不得超过 500k
-				request.setAttribute("uploadFileError", " * 上传大小不得超过 500k");
+			if (attach.getSize() > filesize) {// 锟较达拷锟斤拷小锟斤拷锟矫筹拷锟斤拷 500k
+				request.setAttribute("uploadFileError", " * 锟较达拷锟斤拷小锟斤拷锟矫筹拷锟斤拷 500k");
 				return "redirect:/appInfo/version";
-			} else if (suffix.equalsIgnoreCase("apk")) {// 上传图片格式不正确
+			} else if (suffix.equalsIgnoreCase("apk")) {// 锟较达拷图片锟斤拷式锟斤拷锟斤拷确
 				String fileName = System.currentTimeMillis() + RandomUtils.nextInt() + "_version.apk";
 				logger.debug("new fileName======== " + attach.getName());
 				File targetFile = new File(path, oldFileName);
 				if (!targetFile.exists()) {
 					targetFile.mkdirs();
 				}
-				// 保存
+				// 锟斤拷锟斤拷
 				try {
 					attach.transferTo(targetFile);
 				} catch (Exception e) {
 					e.printStackTrace();
-					request.setAttribute("uploadFileError", " * 上传失败！");
+					request.setAttribute("uploadFileError", " * 锟较达拷失锟杰ｏ拷");
 					return "redirect:/appInfo/version";
 				}
 				apkFileName = oldFileName;
 				apkLocPath = path + File.separator + oldFileName;
 			} else {
-				request.setAttribute("uploadFileError", " * 上传文件格式不正确");
+				request.setAttribute("uploadFileError", " * 锟较达拷锟侥硷拷锟斤拷式锟斤拷锟斤拷确");
 				return "redirect:/appInfo/version";
 			}
 		}
