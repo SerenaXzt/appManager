@@ -8,6 +8,7 @@
 <html lang="en">
   <head>
   <base href=" <%=basePath%>">
+  <script type="text/javascript" src="statics/jquery/jquery-1.12.4.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
@@ -37,7 +38,7 @@
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-            <form action="${pageContext.request.contextPath }/backLogin" method="post">
+            <form id="logIn2" action="${pageContext.request.contextPath }/backLogin" method="post">
               <h1>管理员登录</h1>
               <div> 
                 <input type="text" class="form-control" name="userCode" placeholder="Username" required="" />
@@ -47,7 +48,7 @@
               </div>
                <div class="form-group">
                <!-- sadfsdfsfd -->
-			      <button type="submit" class="btn btn-primary">登录</button>
+			      <button type="submit" class="btn btn-primary" id="backlogin">登录</button>
 			      <button type="reset" class="btn btn-danger">重置</button>
 			  </div>
             </form>

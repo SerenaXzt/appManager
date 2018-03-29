@@ -8,6 +8,7 @@
 <html lang="en">
   <head>
   <base href=" <%=basePath%>">
+  <script type="text/javascript" src="statics/jquery/jquery-1.12.4.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
@@ -37,7 +38,7 @@
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-            <form action="${pageContext.request.contextPath }/devLogin" method="post">
+            <form id="logIn" action="${pageContext.request.contextPath }/devLogin" method="post">
               <h1>开发者登录</h1>
               <div>
                 <input type="text" name="userCode" class="form-control" placeholder="Username" required="" />
@@ -46,7 +47,7 @@
                 <input type="password" name="userPassword" class="form-control" placeholder="Password" required="" />
               </div>
                <div class="form-group">
-			      <button type="submit" class="btn btn-primary">登录</button>
+			      <button type="submit" class="btn btn-primary" id="devlogin">登录</button>
 			      <button type="reset" class="btn btn-danger">重置</button>
 			  </div>
             </form>

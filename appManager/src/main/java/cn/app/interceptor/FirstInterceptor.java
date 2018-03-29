@@ -13,7 +13,7 @@ import cn.app.tools.Constants;
 
 public class FirstInterceptor implements HandlerInterceptor {
 
-	private String[] devmethods = { "/appsInfo", "/appsUpdate", "/appAdd", "/showCategory", "/deleteApp", "/appsSearch",
+	private String[] devmethods = { "/appsUpdate", "/appAdd", "/showCategory", "/deleteApp",
 			"/appsPutOrDwon", "/categorys", "/appVersion", "/addVersion", "/download" };
 
 	private String[] backmethods = {};
@@ -58,7 +58,7 @@ public class FirstInterceptor implements HandlerInterceptor {
 	}
 
 	/**
-	 * 调用目标方法之后, 但渲染视图之前. 可以对请求域中的属性或视图做出修改.
+	 * 锟斤拷锟斤拷目锟疥方锟斤拷之锟斤拷, 锟斤拷锟斤拷染锟斤拷图之前. 锟斤拷锟皆讹拷锟斤拷锟斤拷锟斤拷锟叫碉拷锟斤拷锟皆伙拷锟斤拷图锟斤拷锟斤拷锟睫革拷.
 	 */
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
@@ -73,7 +73,7 @@ public class FirstInterceptor implements HandlerInterceptor {
 	}
 
 	/**
-	 * 渲染视图之后被调用. 释放资源
+	 * 锟斤拷染锟斤拷图之锟襟被碉拷锟斤拷. 锟酵凤拷锟斤拷源
 	 */
 	@Override
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)

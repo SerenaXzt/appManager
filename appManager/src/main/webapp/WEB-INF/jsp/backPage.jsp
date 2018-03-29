@@ -141,7 +141,7 @@
 						</a>
 							<ul class="dropdown-menu dropdown-usermenu pull-right">
 								
-								<li><a href="login.html"><i
+								<li><a id="logOut" href="#"><i
 										class="fa fa-sign-out pull-right"></i> Log Out</a></li>
 							</ul></li>
 
@@ -208,5 +208,6 @@
 
 	<!-- Custom Theme Scripts -->
 	<script src="statics/gentelella-master/build/js/custom.min.js"></script>
+	<script src="statics/common/js/logOut.js"></script>
 </body>
 </html>
