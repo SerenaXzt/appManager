@@ -1,67 +1,70 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-    xmlns:mvc="http://www.springframework.org/schema/mvc"
-    xmlns:context="http://www.springframework.org/schema/context"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
         http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc.xsd
         http://www.springframework.org/schema/context
 		http://www.springframework.org/schema/context/spring-context.xsd">
-   <context:component-scan base-package="cn.appManager.controller">
-   </context:component-scan>
-   
-   
-   <mvc:default-servlet-handler/>
-   <mvc:annotation-driven />
-   	 
-   
-   
-   
+	<context:component-scan base-package="cn.appManager.controller">
+	</context:component-scan>
 
 
-   <!-- <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+	<mvc:default-servlet-handler />
+	<mvc:annotation-driven />
 
-   	 <property name="exceptionMappings">
-   	 	<props>
-   	 		<prop key="java.lang.RuntimeException">error</prop>
-   	 	</props>
-   	 </property>
-   </bean>  -->
+	<mvc:interceptors>
+		<!-- 配置自定义的拦截器 -->
+		<bean class="cn.app.interceptor.FirstInterceptor"></bean>
+		
 
-   
-   <bean id="cm" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
-   		<property name= "mediaTypes">   
-            <value>  
-                json=application/json  
-                xml=application/xml  
-                html=text/html  
-            </value>  
-        </property>
-        <property name= "defaultContentType" value= "text/html" />  
-   </bean>
-   
-   <bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
-   	  <property name="contentNegotiationManager" ref="cm"></property>
-   	  
-   	  <property name="viewResolvers">
-   	  	  <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-   	  	  	<property name="prefix" value="/WEB-INF/jsp/"></property>
-	 		<property name="suffix" value=".jsp"></property>
-		  </bean> 
-   	  </property>
-   	  
-   	  <property name="defaultViews">
-   	  		<bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"></bean>
-   	  </property>
-   </bean>
-   
-   <!-- 配置MultipartResolver，用于上传文件，使用spring的CommonsMultipartResolver -->  
-    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-   		 <property name="maxUploadSize" value="5000000"/>
-   		 <property name="defaultEncoding" value="UTF-8"/>
-    </bean>
-   
+		<!-- 配置 LocaleChanceInterceptor -->
+		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"></bean>
+	</mvc:interceptors>
+
+
+	<!-- <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver"> 
+		<property name="exceptionMappings"> <props> <prop key="java.lang.RuntimeException">error</prop> 
+		</props> </property> </bean> -->
+
+	<bean id="cm"
+		class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+		<property name="mediaTypes">
+			<value>
+				json=application/json
+				xml=application/xml
+				html=text/html
+			</value>
+		</property>
+		<property name="defaultContentType" value="text/html" />
+	</bean>
+
+	<bean
+		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="contentNegotiationManager" ref="cm"></property>
+
+		<property name="viewResolvers">
+			<bean
+				class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+				<property name="prefix" value="/WEB-INF/jsp/"></property>
+				<property name="suffix" value=".jsp"></property>
+			</bean>
+		</property>
+
+		<property name="defaultViews">
+			<bean
+				class="org.springframework.web.servlet.view.json.MappingJackson2JsonView"></bean>
+		</property>
+	</bean>
+
+	<!-- 配置MultipartResolver，用于上传文件，使用spring的CommonsMultipartResolver -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="5000000" />
+		<property name="defaultEncoding" value="UTF-8" />
+	</bean>
+
 </beans>
