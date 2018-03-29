@@ -17,7 +17,7 @@ public class FirstInterceptor implements HandlerInterceptor {
 			"/appsPutOrDwon", "/categorys", "/appVersion", "/addVersion", "/download" };
 
 	private String[] backmethods = {};
-	private String[] unchecks = { "/index", "devLogin", "backLogin" };
+	private String[] unchecks = { "/index", "/devLogin", "/backLogin","/logOut" };
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
@@ -63,13 +63,7 @@ public class FirstInterceptor implements HandlerInterceptor {
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-		boolean flag = false;
-		HttpSession session = request.getSession();
-		if (session.getAttribute(Constants.USER_SESSION) == null) {
-			response.sendRedirect("index.jsp");
-		}
-		System.out.println("[FirstInterceptor] preHandle");
-
+	
 	}
 
 	/**

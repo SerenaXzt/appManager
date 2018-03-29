@@ -46,6 +46,7 @@
               <div>
                 <input type="password" class="form-control" name="userPassword" placeholder="Password" required="" />
               </div>
+              <span style="color:red">${requestScope.error }</span>
                <div class="form-group">
                <!-- sadfsdfsfd -->
 			      <button type="submit" class="btn btn-primary" id="backlogin">登录</button>

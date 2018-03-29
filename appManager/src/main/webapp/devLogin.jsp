@@ -46,6 +46,7 @@
               <div>
                 <input type="password" name="userPassword" class="form-control" placeholder="Password" required="" />
               </div>
+              <span style="color:red">${requestScope.error }</span>
                <div class="form-group">
 			      <button type="submit" class="btn btn-primary" id="devlogin">登录</button>
 			      <button type="reset" class="btn btn-danger">重置</button>

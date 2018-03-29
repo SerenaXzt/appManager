@@ -51,8 +51,8 @@ public class LoginController2 {
 			return "backPage";
 		}else{
 			//ҳ����ת��backLogin.jsp��������ʾ��Ϣ--ת��
-			model.addAttribute("error", "�û��������벻��ȷ");
-			return "redirect:/backLogin.jsp";
+			model.addAttribute("error", "用户名或者密码不正确！");
+			return "forward:/backLogin.jsp";
 		}
 	}
 	
@@ -79,8 +79,8 @@ public class LoginController2 {
 			return "devPage";
 		}else{
 			//ҳ����ת��devLogin.jsp��������ʾ��Ϣ--ת��
-			model.addAttribute("error", "�û��������벻��ȷ");
-			return "redirect:/devLogin.jsp";
+			model.addAttribute("error", "用户名或者密码不正确！");
+			return "forward:/devLogin.jsp";
 		}
 	}
 	
