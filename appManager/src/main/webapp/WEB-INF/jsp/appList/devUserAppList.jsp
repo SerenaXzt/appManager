@@ -145,8 +145,8 @@
 											  <input type="hidden" name="appId" value="${appInfo.id }" />
 											  <ul class="dropdown-menu" aria-labelledby="dLabel">
 											  	<c:choose>
-											  		<c:when test="${appInfo.statusVo==1 || appInfo.statusVo==3 }">
-											  			<li><a href="#">修改（已有版本）</a></li>
+											  		<c:when test="${appInfo.versionNo != null && appInfo.versionNo != ''}">
+											  			<li><a href="appVersionOne/${appInfo.id}">修改（已有版本）</a></li>
 											  		</c:when>
 											  		<c:when test="${appInfo.statusVo==2 || appInfo.statusVo==5 }">
 											  			<li><a class="putAway" href="#">上架</a></li>
@@ -155,7 +155,6 @@
 											  			 <li><a class="soldOut" href="#">下架</a></li>
 											  		</c:when>
 											  	</c:choose>
-											    <li role="separator" class="divider"></li>
 											    <li><a href="appVersion/${appInfo.id }">新增版本</a></li>
 											    <li><a href="appsUpdate/${appInfo.id }">修改</a></li>
 											    <li><a href="appsInfo/${appInfo.id }">查看</a></li>
@@ -200,7 +199,7 @@
 							  </c:forEach>
 							    <c:if test="${requestScope.page.hasNextPage}">
 								    <li>
-								      <a pageNum="${requestScope.page.pageNum }" class="showPage" href="#" aria-label="Next">
+								      <a pageNum="${requestScope.page.pageNum+1 }" class="showPage" href="#" aria-label="Next">
 								        <span aria-hidden="true">&raquo;</span>
 								      </a>
 								    </li>

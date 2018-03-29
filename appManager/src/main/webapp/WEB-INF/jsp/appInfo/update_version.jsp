@@ -11,7 +11,8 @@
 <script type="text/javascript" src="statics/jquery/jquery-1.12.4.js"></script>
 
 <%@include file="/statics/common/head.jsp" %>
-<c:if test="${ !empty requestScope.appversionvo}">
+<h2>修改现有的版本</h2>
+<c:if test="${requestScope.appversionvo != null }">
 	<table class="table table-striped table-hover table-bordered">
   <tr>
     <th>软件名称</th>
@@ -37,40 +38,44 @@
 </table>
 </c:if>
 <form id="add_version" class="form-horizontal form-label-left" action="${pageContext.request.contextPath }/addVersion" method="post" enctype="multipart/form-data">
-					<input type="hidden" name="appid" value="${requestScope.appId }"/>
+					<input type="hidden" name="appid" value="${appversionvo[0].id }"/>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">版本号*</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input type="text" id="versionno" class="form-control" required="required" placeholder="请输入版本号" name="versionno">
+                          <input type="text" id="versionno" class="form-control" value="${appversionvo[0].versionNo}" name="versionno">
                         	<span></span>
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">版本大小*</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input type="text" class="form-control" id="versionsize" required="required" placeholder="请输入版本大小，单位为Mb" name="versionsize">
+                          <input type="text" class="form-control" id="versionsize" value="${appversionvo[0].versionSize }" name="versionsize">
                         	<span></span>
                         </div>
                       </div>
                         <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">发布状态*</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <input type="text" class="form-control" readonly="readonly" placeholder="预发布">
-                          <input type="hidden" name="publishstatus" value="3"/>
+                          <select name="publishstatus" class="form-control"> 
+                          	<option value="1">不发布</option>
+                          	<option value="2">以发布</option>
+                          	<option value="3">预发布</option>
+                          </select>
                       	</div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">版本简介*<span class="required"></span>
                         </label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
-                          <textarea class="form-control" rows="3" required="required" placeholder="请输入本版本的相关信息，本信息作为版本的详细信息进行版本的介绍" name="versioninfo"></textarea>
+                          <textarea class="form-control" rows="3"  name="versioninfo">
+                          	${appversionvo[0].versionInfo}
+                          </textarea>
                         </div>
                       </div>
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">apk文件*</label>
                         <div class="col-md-9 col-sm-9 col-xs-12">
                           <input type="file" class="form-control" name="apkfilename" id="apkfilename">
-                        	<span></span>
                         </div>
                       </div>
                       
@@ -80,12 +85,12 @@
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                          <button class="btn btn-success" id="add_save">保存</button>
+                          <button class="btn btn-success" id="update_btn">更新</button>
                           <a href="appsInfo" class="btn btn-primary">取消</a>
                         </div>
                       </div>
-
                     </form>
+
 <script type="text/javascript" src="statics/common/js/validate_version.js"></script>
 <script type="text/javascript" src="statics/common/js/ajaxThreeLevel.js"></script>
 <%@include file="/statics/common/footer.jsp" %>

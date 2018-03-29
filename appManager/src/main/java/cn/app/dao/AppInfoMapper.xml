@@ -347,7 +347,8 @@
 		status,flatformId, categoryLevel3, downloads, 
 		categoryLevel1, categoryLevel2, aver.versionNo
 		from app_info aif
-		LEFT OUTER JOIN app_version aver
+		LEFT OUTER JOIN
+		(select * from app_version ORDER BY id DESC) aver
 		on aif.versionId = aver.id
      	<where>
      		  <if test="id != null and id != 0">

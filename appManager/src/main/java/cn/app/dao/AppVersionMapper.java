@@ -10,7 +10,7 @@ public interface AppVersionMapper {
 
     int insert(AppVersion record);
 
-    int insertSelective(AppVersion record);
+    void insertSelective(AppVersion record);
 
     AppVersion selectByPrimaryKey(Long id);
 

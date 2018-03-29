@@ -51,8 +51,8 @@ function validate_num(obj){
 			$(this).next("span").html("请输入数字")
 			.css("color","red");
 			flag = false;
-		}else if(selfVal > 200) {
-			$(this).next("span").html("软件大于200Mb")
+		}else if(selfVal > 20) {
+			$(this).next("span").html("软件大于20Mb")
 			.css("color","red");
 			flag = false;
 		}else{

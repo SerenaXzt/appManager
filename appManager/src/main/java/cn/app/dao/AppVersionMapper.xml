@@ -42,7 +42,8 @@
       #{modifyby,jdbcType=BIGINT}, #{modifydate,jdbcType=TIMESTAMP}, #{apklocpath,jdbcType=VARCHAR}, 
       #{apkfilename,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="cn.app.pojo.AppVersion">
+  <insert id="insertSelective" parameterType="cn.app.pojo.AppVersion"
+  	useGeneratedKeys="true" keyProperty="id">
     insert into app_version
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -193,10 +194,12 @@
     <result column="versionSize" jdbcType="DECIMAL" property="versionSize" />
     <result column="modifyDate" jdbcType="TIMESTAMP" property="modifyDate" />
     <result column="apkFileName" jdbcType="VARCHAR" property="apkFileName" />
+  	<result column="versionInfo" jdbcType="VARCHAR" property="versionInfo" />
   </resultMap>
   <select id="selectById" parameterType="java.lang.Long" resultMap="VersionResultMap">
     select 
-	softwareName,versionNo,versionSize,publishStatus,apkFileName,a_ver.modifyDate,appId
+	softwareName,versionNo,versionSize,publishStatus,apkFileName,a_ver.modifyDate,appId,
+	versionInfo
     from app_version a_ver,app_info a_in
 	where a_ver.appId = a_in.id
 	and a_in.id = #{id,jdbcType=BIGINT}

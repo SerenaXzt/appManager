@@ -6,16 +6,26 @@ public class AppVersionVo {
 	private String softwareName;
 
 	private String versionNo;
-	
+
 	private double versionSize;
-	
+
 	private String publishStatus;
-	
+
 	private String apkFileName;
-	
+
 	private Date modifyDate;
-	
+
 	private Long id;
+
+	private String versionInfo;
+
+	public String getVersionInfo() {
+		return versionInfo;
+	}
+
+	public void setVersionInfo(String versionInfo) {
+		this.versionInfo = versionInfo;
+	}
 
 	public String getSoftwareName() {
 		return softwareName;
@@ -46,15 +56,15 @@ public class AppVersionVo {
 	}
 
 	public void setPublishStatus(int publishStatus) {
-		switch(publishStatus) {
+		switch (publishStatus) {
 		case 1:
-			this.publishStatus = "≤ª∑¢≤º";
+			this.publishStatus = "‰∏çÂèëÂ∏É";
 			break;
 		case 2:
-			this.publishStatus = "“—∑¢≤º";
+			this.publishStatus = "Â∑≤ÂèëÂ∏É";
 			break;
 		case 3:
-			this.publishStatus = "‘§∑¢≤º";
+			this.publishStatus = "È¢ÑÂèëÂ∏É";
 			break;
 		}
 	}
@@ -83,7 +93,4 @@ public class AppVersionVo {
 		this.id = id;
 	}
 
-	
-	
-	
 }

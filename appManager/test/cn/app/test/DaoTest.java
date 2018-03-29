@@ -1,5 +1,6 @@
 package cn.app.test;
 
+import java.util.Date;
 import java.util.List;
 
 import org.junit.Test;
@@ -12,6 +13,7 @@ import cn.app.dao.AppInfoMapper;
 import cn.app.dao.AppVersionMapper;
 import cn.app.dao.DevUserMapper;
 import cn.app.pojo.AppInfo;
+import cn.app.pojo.AppVersion;
 import cn.app.pojo.DevUser;
 import cn.app.vo.AppCategoryVo;
 import cn.app.vo.AppInfoVo;
@@ -52,9 +54,11 @@ public class DaoTest {
 				new ClassPathXmlApplicationContext("applicationContext-mybatis.xml");
 		AppVersionMapper appVersionMapper = (AppVersionMapper) context.getBean("appVersionMapper");
 		
-		List<AppVersionVo> avList = appVersionMapper.selectById(58L);
-		System.out.println(avList.get(0).getId());
-		
+		AppVersion version = new AppVersion();
+		version.setApkfilename("sadfsd");
+		version.setCreatedby(1l);
+		appVersionMapper.insertSelective(version);
+		System.out.println(version.getId());
 		
 	}
 }

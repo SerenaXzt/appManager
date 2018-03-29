@@ -111,11 +111,11 @@ public class AppInfoController {
 			logger.info("uploadFile oldFileName ============== > " + oldFileName);
 			String prefix = FilenameUtils.getExtension(oldFileName);// 原文件后缀
 			logger.debug("uploadFile prefix============> " + prefix);
-			int filesize = 500000;
+			int filesize = 2048000;
 			logger.debug("uploadFile size============> " + attach.getSize());
 			if (attach.getSize() > filesize) {// 上传大小不得超过 500k
 				request.setAttribute("uploadFileError", " * 上传大小不得超过 500k");
-				return "useradd";
+				return "app_add";
 			} else if (prefix.equalsIgnoreCase("jpg") || prefix.equalsIgnoreCase("png")
 					|| prefix.equalsIgnoreCase("jpeg") || prefix.equalsIgnoreCase("pneg")) {// 上传图片格式不正确
 				String fileName = System.currentTimeMillis() + RandomUtils.nextInt() + "_Personal.jpg";

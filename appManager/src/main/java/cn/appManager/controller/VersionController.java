@@ -18,6 +18,7 @@ import org.apache.commons.lang3.RandomUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -25,11 +26,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import cn.app.pojo.AppInfo;
 import cn.app.pojo.AppVersion;
@@ -54,6 +58,15 @@ public class VersionController {
 		return "appInfo/version";
 	}
 	
+	@RequestMapping(value="/appVersionOne/{appId}",method=RequestMethod.GET)
+	public String addVersionOne(@PathVariable("appId") Long id, Model model) {
+		List<AppVersionVo> appversionvo = appvs.selectVersionById(id);
+		if(appversionvo != null) {
+			model.addAttribute("appversionvo", appversionvo);
+		}
+		return "appInfo/update_version";
+	}
+	
 	@RequestMapping(value = "/addVersion", method = RequestMethod.POST)
 	public String gotoAddApp2(@Valid AppVersion appversion, BindingResult bindingResult, HttpSession session,
 			HttpServletRequest request, @RequestParam(value = "apkfilename", required = false) MultipartFile attach) {
@@ -64,19 +77,14 @@ public class VersionController {
 		if (!attach.isEmpty()) {
 			String path = request.getSession().getServletContext()
 					.getRealPath("statics" + File.separator + "uploadfiles");
-			logger.info("uploadFile path ============== > " + path);
-			String oldFileName = attach.getOriginalFilename();// ԭ�ļ���
-			logger.info("uploadFile oldFileName ============== > " + oldFileName);
-			String suffix = FilenameUtils.getExtension(oldFileName);// ԭ�ļ���׺
-			logger.debug("uploadFile prefix============> " + suffix);
-			int filesize = 500000000;
-			logger.debug("uploadFile size============> " + attach.getSize());
-			if (attach.getSize() > filesize) {// �ϴ���С���ó��� 500k
-				request.setAttribute("uploadFileError", " * �ϴ���С���ó��� 500k");
-				return "redirect:/appInfo/version";
-			} else if (suffix.equalsIgnoreCase("apk")) {// �ϴ�ͼƬ��ʽ����ȷ
+			String oldFileName = attach.getOriginalFilename();// 获取到文件名
+			String suffix = FilenameUtils.getExtension(oldFileName);// 获取到文件的后缀
+			int filesize = 20971520;
+			if (attach.getSize() > filesize) {// 上传大小不得超过 500k
+				request.setAttribute("uploadFileError", " * 上传大小不得超过 20Mb");
+				return "redirect:/appVersion/"+appversion.getAppid();
+			}else if (suffix.equalsIgnoreCase("apk")) {// 后缀是否正确
 				String fileName = System.currentTimeMillis() + RandomUtils.nextInt() + "_version.apk";
-				logger.debug("new fileName======== " + attach.getName());
 				File targetFile = new File(path, oldFileName);
 				if (!targetFile.exists()) {
 					targetFile.mkdirs();
@@ -86,14 +94,14 @@ public class VersionController {
 					attach.transferTo(targetFile);
 				} catch (Exception e) {
 					e.printStackTrace();
-					request.setAttribute("uploadFileError", " * �ϴ�ʧ�ܣ�");
-					return "redirect:/appInfo/version";
+					request.setAttribute("uploadFileError", "上传失败");
+					return "appInfo/version";
 				}
 				apkFileName = oldFileName;
 				apkLocPath = path + File.separator + oldFileName;
 			} else {
-				request.setAttribute("uploadFileError", " * �ϴ��ļ���ʽ����ȷ");
-				return "redirect:/appInfo/version";
+				request.setAttribute("uploadFileError", "文件不符合规范");
+				return "redirect:/appVersion/"+appversion.getAppid();
 			}
 		}
 
@@ -105,7 +113,7 @@ public class VersionController {
 		if (appvs.addVersion(appversion) > 0) {
 			return "redirect:/appVersion/"+appversion.getAppid();
 		} else {
-			return "redirect:/appInfo/version";
+			return "appInfo/version";
 		}
 	}
 	
@@ -123,4 +131,6 @@ public class VersionController {
         ResponseEntity<byte[]> response = new ResponseEntity<byte[]>(body, header, status);
 		return response;
 	}
+	
+	
 }
