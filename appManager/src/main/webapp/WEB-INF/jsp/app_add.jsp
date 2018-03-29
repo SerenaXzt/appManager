@@ -57,7 +57,7 @@
 						</div>
 						<div class="profile_info">
 							<span>Welcome,</span>
-							<h2>${sessionScope.userSession.devcode }</h2>
+							<h2>${sessionScope.userSession.usercode }</h2>
 						</div>
 					</div>
 					<!-- /menu profile quick info -->
@@ -68,7 +68,7 @@
 					<div id="sidebar-menu"
 						class="main_menu_side hidden-print main_menu">
 						<div class="menu_section">
-							<h3>${sessionScope.userSession.devname }</h3>
+							<h3>${sessionScope.userSession.username }</h3>
 							<ul class="nav side-menu">
 								<li><a><i class="fa fa-home"></i>App账户管理<span
 										class="fa fa-chevron-down"></span></a>
@@ -143,7 +143,7 @@
 					<ul class="nav navbar-nav navbar-right">
 						<li class=""><a href="javascript:;"
 							class="user-profile dropdown-toggle" data-toggle="dropdown"
-							aria-expanded="false"> <img src="statics/images/img.jpg" alt="">${sessionScope.userSession.devname }<span 
+							aria-expanded="false"> <img src="statics/images/img.jpg" alt="">${sessionScope.userSession.username }<span 
 							class=" fa fa-angle-down"></span>
 						</a>
 							<ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -166,7 +166,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>新增APP基础信息 <small>${sessionScope.userSession.devname }</small></h2>
+                    <h2>新增APP基础信息 <small>${sessionScope.userSession.username }</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
