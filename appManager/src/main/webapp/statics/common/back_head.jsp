@@ -1,14 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%
-	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
-%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<base href=" <%=basePath%>">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <!-- Bootstrap -->
@@ -29,6 +23,25 @@
 <!-- Custom Theme Style -->
 <link href="statics/gentelella-master/build/css/custom.min.css"
 	rel="stylesheet">
+<!-- Bootstrap -->
+<link href="statics/gentelella-master/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Font Awesome -->
+<link href="statics/gentelella-master/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<!-- NProgress -->
+<link href="statics/gentelella-master/vendors/nprogress/nprogress.css" rel="stylesheet">
+<!-- iCheck -->
+<link href="statics/gentelella-master/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+<!-- bootstrap-wysiwyg -->
+<link href="statics/gentelella-master/vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet">
+<!-- Select2 -->
+<link href="statics/gentelella-master/vendors/select2/dist/css/select2.min.css" rel="stylesheet">
+<!-- Switchery -->
+<link href="statics/gentelella-master/vendors/switchery/dist/switchery.min.css" rel="stylesheet">
+<!-- starrr -->
+<link href="statics/gentelella-master/vendors/starrr/dist/starrr.css" rel="stylesheet">
+
+<!-- Custom Theme Style -->
+<link href="statics/gentelella-master/build/css/custom.min.css" rel="stylesheet">
 </head>
 <body class="nav-md">
 	<div class="container body">
@@ -138,7 +151,6 @@
 							class=" fa fa-angle-down"></span>
 						</a>
 							<ul class="dropdown-menu dropdown-usermenu pull-right">
-								
 								<li><a id="logOut" href="#"><i
 										class="fa fa-sign-out pull-right"></i> Log Out</a></li>
 							</ul></li>
@@ -153,60 +165,5 @@
 			<div class="right_col" role="main">
 				<!-- top tiles -->
 				<!-- /top tiles -->
-
-				<div class="row">
-
-					<!-- Start to do list -->
-
-				</div>
-
-			</div>
-
-		</div>
-	</div>
-
-	<!-- jQuery -->
-	<script type="text/javascript" src="statics/jquery/jquery-1.12.4.js"></script>
-	<script src="statics/gentelella-master/vendors/jquery/dist/jquery.min.js"></script>
-	<!-- Bootstrap -->
-	<script src="statics/gentelella-master/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-	<!-- FastClick -->
-	<script src="statics/gentelella-master/vendors/fastclick/lib/fastclick.js"></script>
-	<!-- NProgress -->
-	<script src="statics/gentelella-master/vendors/nprogress/nprogress.js"></script>
-	<!-- Chart.js -->
-	<script src="statics/gentelella-master/vendors/Chart.js/dist/Chart.min.js"></script>
-	<!-- gauge.js -->
-	<script src="statics/gentelella-master/vendors/gauge.js/dist/gauge.min.js"></script>
-	<!-- bootstrap-progressbar -->
-	<script
-		src="statics/gentelella-master/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
-	<!-- iCheck -->
-	<script src="statics/gentelella-master/vendors/iCheck/icheck.min.js"></script>
-	<!-- Skycons -->
-	<script src="statics/gentelella-master/vendors/skycons/skycons.js"></script>
-	<!-- Flot -->
-	<script src="statics/gentelella-master/vendors/Flot/jquery.flot.js"></script>
-	<script src="statics/gentelella-master/vendors/Flot/jquery.flot.pie.js"></script>
-	<script src="statics/gentelella-master/vendors/Flot/jquery.flot.time.js"></script>
-	<script src="statics/gentelella-master/vendors/Flot/jquery.flot.stack.js"></script>
-	<script src="statics/gentelella-master/vendors/Flot/jquery.flot.resize.js"></script>
-	<!-- Flot plugins -->
-	<script src="statics/gentelella-master/vendors/flot.orderbars/js/jquery.flot.orderBars.js"></script>
-	<script src="statics/gentelella-master/vendors/flot-spline/js/jquery.flot.spline.min.js"></script>
-	<script src="statics/gentelella-master/vendors/flot.curvedlines/curvedLines.js"></script>
-	<!-- DateJS -->
-	<script src="statics/gentelella-master/vendors/DateJS/build/date.js"></script>
-	<!-- JQVMap -->
-	<script src="statics/gentelella-master/vendors/jqvmap/dist/jquery.vmap.js"></script>
-	<script src="statics/gentelella-master/vendors/jqvmap/dist/maps/jquery.vmap.world.js"></script>
-	<script src="statics/gentelella-master/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js"></script>
-	<!-- bootstrap-daterangepicker -->
-	<script src="js/moment/moment.min.js"></script>
-	<script src="js/datepicker/daterangepicker.js"></script>
-
-	<!-- Custom Theme Scripts -->
-	<script src="statics/gentelella-master/build/js/custom.min.js"></script>
-	<script src="statics/common/js/logOut.js"></script>
-</body>
-</html>
+				
+			<!-- =============top=========================== -->

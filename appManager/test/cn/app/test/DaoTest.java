@@ -11,6 +11,7 @@ import cn.app.criteria.CriteriaApp;
 import cn.app.dao.AppCategoryMapper;
 import cn.app.dao.AppInfoMapper;
 import cn.app.dao.AppVersionMapper;
+import cn.app.dao.BackendUserMapper;
 import cn.app.dao.DevUserMapper;
 import cn.app.pojo.AppInfo;
 import cn.app.pojo.AppVersion;
@@ -18,6 +19,7 @@ import cn.app.pojo.DevUser;
 import cn.app.vo.AppCategoryVo;
 import cn.app.vo.AppInfoVo;
 import cn.app.vo.AppVersionVo;
+import cn.app.vo.UserInfoVo;
 
 public class DaoTest {
 
@@ -59,6 +61,17 @@ public class DaoTest {
 		version.setCreatedby(1l);
 		appVersionMapper.insertSelective(version);
 		System.out.println(version.getId());
+		
+	}
+	
+	@Test
+	public void testApp3(){
+		ApplicationContext context = 
+				new ClassPathXmlApplicationContext("applicationContext-mybatis.xml");
+		BackendUserMapper backendUserMapper = (BackendUserMapper) context.getBean("backendUserMapper");
+		
+		UserInfoVo user =  backendUserMapper.selectById(2l);
+		System.out.println(user);
 		
 	}
 }

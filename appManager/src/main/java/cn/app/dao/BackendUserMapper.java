@@ -1,8 +1,11 @@
 package cn.app.dao;
 
-import org.apache.ibatis.annotations.Param;
+import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import cn.app.pojo.BackendUser;
+import cn.app.vo.UserInfoVo;
+import cn.app.vo.UserVo;
 
 public interface BackendUserMapper {
     int deleteByPrimaryKey(Long id);
@@ -18,4 +21,8 @@ public interface BackendUserMapper {
     int updateByPrimaryKey(BackendUser record);
     
     BackendUser selectByCodeAndPwd(@Param("userCode")String userCode, @Param("userPassword")String userPassword);
+    
+    List<UserVo> selectAllUser();
+    
+    UserInfoVo selectById(Long id);
 }

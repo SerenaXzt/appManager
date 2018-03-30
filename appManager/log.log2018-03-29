@@ -1,0 +1,16 @@
+2018-3-29 10:46:01[ INFO](AbstractApplicationContext.java:582) Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@4ec6a292: startup date [Thu Mar 29 10:46:01 CST 2018]; root of context hierarchy
+2018-3-29 10:46:01[ INFO](XmlBeanDefinitionReader.java:317) Loading XML bean definitions from class path resource [applicationContext-mybatis.xml]
+2018-3-29 10:46:06[ INFO](XmlBeanDefinitionReader.java:317) Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+2018-3-29 10:46:06[ INFO](SQLErrorCodesFactory.java:127) SQLErrorCodes loaded: [DB2, Derby, H2, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase, Hana]
+2018-3-29 10:48:46[ INFO](AbstractApplicationContext.java:582) Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@4ec6a292: startup date [Thu Mar 29 10:48:46 CST 2018]; root of context hierarchy
+2018-3-29 10:48:46[ INFO](XmlBeanDefinitionReader.java:317) Loading XML bean definitions from class path resource [applicationContext-mybatis.xml]
+2018-3-29 10:48:51[ INFO](XmlBeanDefinitionReader.java:317) Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+2018-3-29 10:48:51[ INFO](SQLErrorCodesFactory.java:127) SQLErrorCodes loaded: [DB2, Derby, H2, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase, Hana]
+2018-3-29 10:53:42[ INFO](AbstractApplicationContext.java:582) Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@4ec6a292: startup date [Thu Mar 29 10:53:42 CST 2018]; root of context hierarchy
+2018-3-29 10:53:43[ INFO](XmlBeanDefinitionReader.java:317) Loading XML bean definitions from class path resource [applicationContext-mybatis.xml]
+2018-3-29 10:53:47[ INFO](XmlBeanDefinitionReader.java:317) Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+2018-3-29 10:53:47[ INFO](SQLErrorCodesFactory.java:127) SQLErrorCodes loaded: [DB2, Derby, H2, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase, Hana]
+2018-3-29 10:56:19[ INFO](AbstractApplicationContext.java:582) Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@4ec6a292: startup date [Thu Mar 29 10:56:19 CST 2018]; root of context hierarchy
+2018-3-29 10:56:19[ INFO](XmlBeanDefinitionReader.java:317) Loading XML bean definitions from class path resource [applicationContext-mybatis.xml]
+2018-3-29 10:58:05[ INFO](AbstractApplicationContext.java:582) Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@4ec6a292: startup date [Thu Mar 29 10:58:05 CST 2018]; root of context hierarchy
+2018-3-29 10:58:05[ INFO](XmlBeanDefinitionReader.java:317) Loading XML bean definitions from class path resource [applicationContext-mybatis.xml]

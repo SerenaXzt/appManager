@@ -8,7 +8,7 @@
 <base href=" <%=basePath%>">
 <script type="text/javascript" src="statics/jquery/jquery-1.12.4.js"></script>
 
-<%@include file="/statics/common/head.jsp" %>
+<%@include file="/statics/common/back_head.jsp" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 			<div class="container">
 					<div class="row">

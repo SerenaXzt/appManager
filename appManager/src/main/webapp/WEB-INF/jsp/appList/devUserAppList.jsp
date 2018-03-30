@@ -217,19 +217,21 @@
 <script type="text/javascript">
 	$(".delete").click(function(){
 		var delId = $(this).attr("delete_app");
-		$.ajax({
-			url:"${pageContext.request.contextPath }/deleteApp/"+delId,
-			type : "GET",
-			success : function(result){
-				if(result.code == 100){
-					alert("删除成功！");
-					location.reload();
-				}else{
-					alert("删除失败！");
-					location.reload();
+		if(confirm("确认删除吗？")){
+			$.ajax({
+				url:"${pageContext.request.contextPath }/deleteApp/"+delId,
+				type : "GET",
+				success : function(result){
+					if(result.code == 100){
+						alert("删除成功！");
+						location.reload();
+					}else{
+						alert("删除失败！");
+						location.reload();
+					}
 				}
-			}
-		});
+			});
+		}
 		return false;
 	});
 	$(".showPage").click(function(){

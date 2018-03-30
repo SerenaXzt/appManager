@@ -145,4 +145,31 @@
 	    from backend_user
 	    where userCode=#{userCode} and userPassword=#{userPassword}
 	</select>
+	<resultMap id="UserVoMap" type="cn.app.vo.UserVo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="userCode" jdbcType="VARCHAR" property="usercode" />
+    <result column="userName" jdbcType="VARCHAR" property="username" />
+    <result column="userPassword" jdbcType="VARCHAR" property="userpassword" />
+  </resultMap>
+	<select id="selectAllUser" resultMap="UserVoMap">
+		select id,userCode,userName,userPassword
+		from backend_user
+	</select>
+	<resultMap id="UserInfoMap" type="cn.app.vo.UserInfoVo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="userCode" jdbcType="VARCHAR" property="usercode" />
+    <result column="userName" jdbcType="VARCHAR" property="username" />
+    <result column="userType" jdbcType="BIGINT" property="usertype1" />
+    <result column="createdBy" jdbcType="BIGINT" property="createdby1" />
+    <result column="creationDate" jdbcType="TIMESTAMP" property="creationdate" />
+    <result column="modifyBy" jdbcType="BIGINT" property="modifyby" />
+    <result column="modifyDate" jdbcType="TIMESTAMP" property="modifydate" />
+    <result column="userPassword" jdbcType="VARCHAR" property="userpassword" />
+  </resultMap>
+  <select id="selectById" parameterType="java.lang.Long" resultMap="UserInfoMap">
+    select 
+    <include refid="Base_Column_List" />
+    from backend_user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
 </mapper>

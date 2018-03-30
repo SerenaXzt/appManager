@@ -2,6 +2,8 @@ package cn.app.pojo;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class BackendUser {
     private Long id;
 
@@ -13,6 +15,7 @@ public class BackendUser {
 
     private Long createdby;
 
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date creationdate;
 
     private Long modifyby;
